@@ -9,11 +9,11 @@ interface MetaProps {
 }
 
 export default function Meta (props: MetaProps) {
-    const ingredients = Array.isArray(props.attributes.ingredients) 
-        ? props.attributes.ingredients 
-        : Object.values(props.attributes.ingredients).flat()
-
-    console.log(ingredients)
+    const ingredients = (
+        Array.isArray(props.attributes.ingredients) 
+            ? props.attributes.ingredients 
+            : Object.values(props.attributes.ingredients).flat()
+    ).map(ingredient => `${ingredient.qty} ${ingredient.unit} ${ingredient.name}`)
     
     return (
         <Head>
@@ -72,7 +72,7 @@ export default function Meta (props: MetaProps) {
                         '@type': 'NutritionInformation',
                         'calories': `${props.attributes.caloriesPerServing} calories`
                     },
-                    'recipeIngredient': ingredients.map((ingredient) => ingredient.name),
+                    'recipeIngredient': ingredients,
                 }
             )}} />
             <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(
