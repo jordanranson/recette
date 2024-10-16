@@ -39,7 +39,7 @@ export const getStaticProps = (async () => {
     }
 }) satisfies GetStaticProps<StaticProps>
 
-export default function IndexPage (props: StaticProps) {
+export default function ListTagPage (props: StaticProps) {
     const router = useRouter()
     
     return (

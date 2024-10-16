@@ -51,7 +51,7 @@ export const getStaticProps = (async (context) => {
     }
 }) satisfies GetStaticProps<StaticProps>
 
-export default function ListCategoryPage (props: StaticProps) {
+export default function ListRecipePage (props: StaticProps) {
     const router = useRouter()
 
     return (

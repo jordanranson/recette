@@ -37,7 +37,7 @@ export const getStaticProps = (async () => {
     }
 }) satisfies GetStaticProps<StaticProps>
 
-export default function NotFoundPage (props: StaticProps) {
+export default function ErrorPage (props: StaticProps) {
     return (
         <>
             <ErrorMeta
