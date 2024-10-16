@@ -3,7 +3,7 @@ import styles from './RecetteTaxonomy.module.sass'
 import React, { HTMLAttributes } from 'react'
 import Link from 'next/link'
 
-import { forEach, ifElse } from '@/util/controlFlow'
+import { forEach, ifElse, ifThen } from '@/util/controlFlow'
 import { useAppState } from '@/hooks/useAppState'
 import { useThemes } from '@/hooks/useThemes'
 
@@ -12,7 +12,7 @@ import NavBar from '../NavBar'
 import PageFooter from '../PageFooter'
 
 export interface RecetteTaxonomyProps extends HTMLAttributes<HTMLDivElement> {
-    taxonomy: Taxonomy
+    taxonomy: TaxonomyItem
     config: RecetteConfig
     searchContext: SearchContext
 }
@@ -37,14 +37,21 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
             <div>
                 <main>
                     <article>
+                        {
+                            ifThen(typeof props.taxonomy.root === 'string' && props.taxonomy.rootTitle, () => (
+                                <Block size='medium'>
+                                    <Link href={'/' + props.taxonomy.root} className='text-taxonomy'>{props.taxonomy.rootTitle!}</Link>
+                                </Block>
+                            ))
+                        }
                         <Block size='medium'>
                             <h1>{props.taxonomy.title}</h1>
                         </Block>
                         <Block size='medium'>
                             <ul className={styles['RecetteTaxonomy__List']}>
                                 {
-                                    ifElse(
-                                        props.taxonomy.root, 
+                                    ifThen(
+                                        props.taxonomy.root === true, 
                                         () => (
                                             <>
                                                 {
@@ -61,7 +68,56 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                                                     ))
                                                 }
                                             </>
-                                        ), 
+                                        )
+                                    )
+                                }
+                                {
+                                    ifThen(
+                                        props.taxonomy.id === 'tag', 
+                                        () => (
+                                            <>
+                                                {
+                                                    forEach(props.searchContext.tags, (taxonomy) => (
+                                                        <Link className='panel' href={'/tag/' + taxonomy.id} key={taxonomy.id}>
+                                                            <li>
+                                                                <h2>{taxonomy.id}</h2>
+                                                                <p>
+                                                                    <span>{taxonomy.recipes.length}</span>&nbsp;
+                                                                    <span>recipes</span>
+                                                                </p>
+                                                            </li>
+                                                        </Link>
+                                                    ))
+                                                }
+                                            </>
+                                        )
+                                    )
+                                }
+                                {
+                                    ifThen(
+                                        props.taxonomy.id === 'author', 
+                                        () => (
+                                            <>
+                                                {
+                                                    forEach(props.searchContext.authors, (taxonomy) => (
+                                                        <Link className='panel' href={'/author/' + taxonomy.id} key={taxonomy.id}>
+                                                            <li>
+                                                                <h2>{taxonomy.name}</h2>
+                                                                <p>
+                                                                    <span>{taxonomy.recipes.length}</span>&nbsp;
+                                                                    <span>recipes</span>
+                                                                </p>
+                                                            </li>
+                                                        </Link>
+                                                    ))
+                                                }
+                                            </>
+                                        )
+                                    )
+                                }
+                                {
+                                    ifThen(
+                                        props.taxonomy.root !== true, 
                                         () => (
                                             <>
                                                 {

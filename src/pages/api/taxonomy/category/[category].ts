@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { promises as fs } from 'fs'
 import path from 'path'
-import { formatTaxonomyTitle } from '@/util/strings'
+
+import { toId, toTitle } from '@/util/strings'
 import { parseRecipe } from '@/markdown/parser'
 
 interface Data {
-    taxonomy: Taxonomy
+    taxonomy: TaxonomyItem
     searchContext: SearchContext
 }
 
@@ -23,24 +24,29 @@ export default async function handler(
     const filePath = path.join(__dirname, '../../../../../../public/recipes/' + category)
     const files = (await fs.readdir(filePath))
 
-    const recipes: Taxonomy[ 'recipes' ] = await Promise.all(
-        files.map(async (file) => {
-            const raw = await fs.readFile(path.join(filePath, file), 'utf8')
-            const { attributes } = parseRecipe(raw)
-            return {
-                id: file.replace('.md', ''),
-                title: attributes.title,
-                description: attributes.description,
-                tags: attributes.tags.map(tag => tag.toLowerCase()),
-                categoryId: category
-            }
-        })
+    const recipes: TaxonomyItem[ 'recipes' ] = await Promise.all(
+        files
+            .map(async (file) => {
+                const raw = await fs.readFile(path.join(filePath, file), 'utf8')
+                const { attributes } = parseRecipe(raw)
+                return {
+                    id: file.replace('.md', ''),
+                    title: attributes.title,
+                    description: attributes.description,
+                    tags: attributes.tags.map(tag => tag.toLowerCase()),
+                    categoryId: category,
+                    authorId: toId(attributes.author)
+                }
+            })
     )
+    recipes.sort((a, b) => a.title.localeCompare(b.title))
 
     const taxonomy = {
         id: category,
-        title: formatTaxonomyTitle(category),
+        title: toTitle(category),
         recipes,
+        root: '',
+        rootTitle: 'All Recipes'
     }
 
     res

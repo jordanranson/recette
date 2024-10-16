@@ -5,7 +5,6 @@ summary: >
     My recipes's summary
 version: 1.0.0
 author: Jordan
-authorLink: https://www.jordanranson.com
 tags: drink, recipe
 created: 2024-01-01
 modified: 2024-01-01

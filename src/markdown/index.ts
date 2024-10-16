@@ -2,7 +2,7 @@ import { MarkedExtension, marked } from 'marked'
 
 class Markdown {
     public parse (markdown: string) {
-        const html = marked.parse(markdown)
+        const html = marked.parse(markdown) as string
         return { html }
     }
 

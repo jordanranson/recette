@@ -1,9 +1,10 @@
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
+
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
  
 interface StaticProps {
-    taxonomy: Taxonomy
+    taxonomy: TaxonomyItem
     config: RecetteConfig
     searchContext: SearchContext
 }
@@ -15,7 +16,7 @@ export const getStaticPaths = (async () => {
         searchContext = await res.json()
     }
 
-    const tags = searchContext.recipes.flatMap((recipe) => recipe.tags)
+    const tags = searchContext.tags.map((tag) => tag.id)
 
     return {
         paths: tags.map((tag) => ({ params: { tag } })),
@@ -30,7 +31,7 @@ export const getStaticProps = (async (context) => {
         config = await res.json()
     }
 
-    let taxonomy: Taxonomy = {} as any
+    let taxonomy: TaxonomyItem = {} as any
     let searchContext: SearchContext = {} as any
     {
         const res = await fetch('http://localhost:3000/api/taxonomy/tag/' + context.params!.tag)

@@ -9,7 +9,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorEleme
     linkActive?: boolean
 }
 
-function useClassName (props: ButtonProps) {
+export function useButtonClassName (props: ButtonProps) {
     return clsx(
         'button',
         props.kind ? `button--${props.kind}` : 'button--primary',
@@ -21,7 +21,7 @@ function useClassName (props: ButtonProps) {
 }
 
 export function Button (props: ButtonProps) {
-    const className = useClassName(props)
+    const className = useButtonClassName(props)
 
     return (
         <button className={className} onClick={props.onClick}>
@@ -35,7 +35,7 @@ interface InputButtonProps extends ButtonProps {
 }
 
 export function InputButton (props: InputButtonProps) {
-    const className = useClassName(props)
+    const className = useButtonClassName(props)
 
     return (
         <button className={className} type={props.type}>
@@ -49,7 +49,7 @@ interface LinkButtonProps extends ButtonProps {
 }
 
 export function LinkButton (props: LinkButtonProps) {
-    const className = useClassName({
+    const className = useButtonClassName({
         ...props,
         kind: props.kind || 'link'
     })

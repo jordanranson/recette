@@ -18,7 +18,13 @@ export default function PageFooter (props: PageFooterProps) {
                         <Level size='small'>
                             {
                                 forEach(props.config.template.footerLinks, (link, index) => (
-                                    <a key={index} href={link.link} className='button button--link text-small'>
+                                    <a 
+                                        key={index} 
+                                        className='button button--link text-small'
+                                        href={link.link} 
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                    >
                                         {link.text}
                                     </a>
                                 ))
@@ -28,7 +34,14 @@ export default function PageFooter (props: PageFooterProps) {
                 ))
             }
             <Block size='small'>
-                powered by <a href='#' className='button button--link text-small'>Recette</a>
+                powered by <a 
+                    className='button button--link text-small'
+                    href='https://github.com/jordanranson/recette' 
+                    target='_blank'
+                    rel='noopener noreferrer'
+                >
+                    Recette
+                </a>
             </Block>
         </div>
     )

@@ -53,7 +53,14 @@ function RecipeIngredientBlock (props: RecipeIngredientBlockProps) {
                                             ifElse(
                                                 ingredient.link, 
                                                 () => (
-                                                    <Link href={ingredient.link!} className='button button--link'>{ingredient.name}</Link>
+                                                    <a 
+                                                        className='button button--link'
+                                                        href={ingredient.link!} 
+                                                        target='_blank'
+                                                        rel='noopener noreferrer'
+                                                    >
+                                                        {ingredient.name}
+                                                    </a>
                                                 ), () => (
                                                     <span>{ingredient.name}</span>
                                                 )

@@ -22,8 +22,8 @@ export interface RecetteProps extends HTMLAttributes<HTMLDivElement> {
 export default function Recette (props: RecetteProps) {
     const [ appState, dispatchAppState ] = useAppState(props.recipe)
 
-    useRecipeRerender(appState, dispatchAppState)
     useThemes(appState.settings.theme)
+    useRecipeRerender(appState, dispatchAppState)
 
     return (
         <main className={styles['RecetteRecipe']}>

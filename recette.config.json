@@ -2,9 +2,5 @@
     "build": {
         "baseUrl": "https://www.recette.com/"
     },
-    "template": {
-        "footerLinks": [
-            { "text": "Website", "link": "https://www.recette.com" }
-        ]
-    }
+    "template": {}
 }

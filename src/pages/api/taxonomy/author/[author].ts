@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { toTitle } from '@/util/strings'
 
 interface Data {
+    author: AuthorItem
     taxonomy: TaxonomyItem
     searchContext: SearchContext
 }
@@ -16,22 +17,28 @@ export default async function handler(
         searchContext = await res.json()
     }
 
-    const tag = req.query.tag as string
     const recipes = searchContext.recipes
-        .filter((recipe) => recipe.tags.includes(tag))
+        .filter((recipe) => recipe.authorId === req.query.author)
         .sort((a, b) => a.title.localeCompare(b.title))
+
+    const author = {
+        id: req.query.author as string,
+        name: toTitle(req.query.author as string),
+        recipes: recipes.map((recipe) => ({ id: recipe.id } as any))
+    }
     
     const taxonomy = {
-        id: tag,
-        title: `${'"' + toTitle(tag) + '"'} Recipes`,
+        id: author.id,
+        title: `Recipes by ${author.name}`,
         recipes,
-        root: 'tag',
-        rootTitle: 'All Tags'
+        root: 'author',
+        rootTitle: 'All Authors'
     }
 
     res
         .status(200)
         .json({
+            author,
             taxonomy,
             searchContext
         })

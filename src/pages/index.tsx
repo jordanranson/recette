@@ -3,7 +3,7 @@ import Head from 'next/head'
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
  
 interface StaticProps {
-    taxonomy: Taxonomy
+    taxonomy: TaxonomyItem
     config: RecetteConfig
     searchContext: SearchContext
 }
@@ -21,7 +21,7 @@ export const getStaticProps = (async (context) => {
         searchContext = await res.json()
     }
 
-    const taxonomy: Taxonomy = {
+    const taxonomy: TaxonomyItem = {
         title: 'All Recipes',
         id: '',
         root: true,

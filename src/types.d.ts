@@ -44,7 +44,6 @@ declare interface RecipeAttributes {
     summary: string
     version: string
     author: string
-    authorLink: string
     tags: string[]
     categoryId?: string
     created: Date
@@ -64,6 +63,7 @@ declare interface RecipeItem {
     id: string
     tags: string[]
     categoryId: string
+    authorId: string
 }
 
 
@@ -77,14 +77,28 @@ declare interface RenderError {
     error: string
 }
 
-declare interface Taxonomy {
+declare interface AuthorItem {
+    id: string
+    name: string
+    recipes: RecipeItem[]
+}
+
+declare interface TagItem {
+    id: string
+    recipes: RecipeItem[]
+}
+
+declare interface TaxonomyItem {
     id: string
     title: string
     recipes: RecipeItem[]
-    root?: boolean
+    root?: boolean | string
+    rootTitle?: string
 }
 
 declare interface SearchContext {
+    authors: AuthorItem[]
     recipes: RecipeItem[]
-    taxonomies: Taxonomy[]
+    tags: TagItem[]
+    taxonomies: TaxonomyItem[]
 }

@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { forEach, ifThen } from '@/util/controlFlow'
 
 import Block from './Block'
-import { LinkButton } from './controls/Button'
+import { LinkButton, useButtonClassName } from './controls/Button'
+import { toId } from '@/util/strings'
 
 const ABOUT_ITEM_KEYS = [
     'caloriesPerServing',
@@ -49,42 +50,26 @@ export interface RecipeSummaryProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function RecipeSummary (props: RecipeSummaryProps) {
     const hasAbout = useAbout(props.attributes)
+    const buttonClassName = useButtonClassName({ kind: 'link' })
     
     return (
         <div className='RecipeSummary'>
-            {
-                ifThen(props.attributes.categoryId, () => (
-                    <Block size='medium'>
-                        <Link href={`/${props.attributes.categoryId}`} className='RecipeSummary__Category'>{props.attributes.categoryId?.replace(/_-\./g, ' ')}</Link>
-                    </Block>
-                ))
-            }
+            <Block size='medium'>
+                <Link href={`/${props.attributes.categoryId}`} className='text-taxonomy'>{props.attributes.categoryId?.replace(/_-\./g, ' ')}</Link>
+            </Block>
             <Block size='small'>
                 <h1>{props.attributes.title}</h1>
             </Block>
-            {
-                ifThen(props.attributes.author && props.attributes.authorLink, () => (
-                    <Block size='small'>
-                        <p>
-                            <em>
-                                <span>by&nbsp;</span>
-                                <LinkButton href='#'>{props.attributes.author}</LinkButton>
-                            </em>
-                        </p>
-                    </Block>
-                ))
-            }
-            {
-                ifThen(props.attributes.author && !props.attributes.authorLink, () => (
-                    <Block size='small'>
-                        <p>
-                            <em>
-                                <span>{'by ' + props.attributes.author}</span>
-                            </em>
-                        </p>
-                    </Block>
-                ))
-            }
+            <Block size='small'>
+                <p>
+                    <em>
+                        <span>by&nbsp;</span>
+                        <LinkButton href={'/author/' + toId(props.attributes.author)}>
+                            {props.attributes.author}
+                        </LinkButton>
+                    </em>
+                </p>
+            </Block>
             {
                 ifThen(props.attributes.summary, () => (
                     <Block size='medium'>
@@ -163,7 +148,7 @@ export default function RecipeSummary (props: RecipeSummaryProps) {
                         <div className='RecipeSummary__Tags'>
                             {
                                 forEach(props.attributes.tags, (tag, index) => (
-                                    <LinkButton href={`/tag/${tag}`} kind='primary' key={index}>{tag}</LinkButton>
+                                    <LinkButton href={`/tag/${toId(tag)}`} kind='primary' key={index}>{tag}</LinkButton>
                                 ))
                             }
                         </div>

@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { forEach, ifElse, ifThen } from '@/util/controlFlow'
 import { AppState, AppStateAction } from '@/hooks/useAppState'
@@ -7,10 +8,17 @@ import { AppState, AppStateAction } from '@/hooks/useAppState'
 import { JumboSearch } from './controls/JumboSearch'
 import { IconButton, IconButtonLink } from './Icon'
 import Level from './Level'
+import { toTitle } from '@/util/strings'
 
 function useSearch (searchContext: SearchContext, taxonomy?: string) {
+    const router = useRouter()
     const [ query, setQuery ] = useState('')
     const [ results, setResults ] = useState<RecipeItem[]>([])
+
+    useEffect(() => {
+        setQuery('')
+        setResults([])
+    }, [ router.asPath ])
 
     useEffect(() => {
         const onSearch = () => {
@@ -26,11 +34,9 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
                     return (
                         r.title.toLowerCase().includes(q) ||
                         r.description.toLowerCase().includes(q) ||
-                        r.categoryId?.toLowerCase().includes(q) ||
-                        r.tags.reduce((prev, cur) => {
-                            if (cur.includes(q)) return true
-                            return prev
-                        }, false)
+                        toTitle(r.authorId).toLowerCase().includes(q) ||
+                        toTitle(r.categoryId).toLowerCase().includes(q) ||
+                        r.tags.reduce((prev, cur) => cur.includes(q) ? true : prev, false)
                     )
                 })
                 .map(r => {
@@ -38,11 +44,9 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
 
                     if (r.title.toLowerCase().includes(q)) weight += 4
                     if (r.description.toLowerCase().includes(q)) weight += 3
-                    if (r.categoryId?.toLowerCase().includes(q)) weight += 1
-                    if (r.tags.reduce((prev, cur) => {
-                        if (cur.includes(q)) return true
-                        return prev
-                    }, false)) weight += 2
+                    if (toTitle(r.authorId).toLowerCase().includes(q)) weight += 1
+                    if (toTitle(r.categoryId).toLowerCase().includes(q)) weight += 1
+                    if (r.tags.reduce((prev, cur) => cur.includes(q) ? true : prev, false)) weight += 2
 
                     return {
                         ...r,
@@ -69,13 +73,13 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
         if (!found) {
             const index = Math.round(Math.random() * (searchContext.recipes.length - 1))
             const recipe = searchContext.recipes[index]
-            window.location.href = '/' + recipe.categoryId + '/' + recipe.id
+            router.push('/' + recipe.categoryId + '/' + recipe.id)
             return
         }
 
         const index = Math.round(Math.random() * (found.recipes.length - 1))
         const recipe = found.recipes[index]
-        window.location.href = '/' + recipe.categoryId + '/' + recipe.id
+        router.push('/' + recipe.categoryId + '/' + recipe.id)
     }
 
     return {

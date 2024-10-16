@@ -39,7 +39,6 @@ export function parseAttributesFromYaml (yamlString: string) {
         'summary',
         'version',
         'author',
-        'authorLink',
         'tags',
         'created',
         'modified',
