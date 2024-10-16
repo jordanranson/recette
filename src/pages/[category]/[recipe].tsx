@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import RecipeMeta from '@/components/meta/RecipeMeta'
 import RecetteRecipe from '@/components/layouts/RecetteRecipe'
+import { fetchJson } from '@/util/fetchJson'
  
 interface StaticProps {
     recipe: Recipe
@@ -11,11 +12,7 @@ interface StaticProps {
 }
 
 export const getStaticPaths = (async () => {
-    let searchContext: SearchContext
-    {
-        const res = await fetch('http://localhost:3000/api/search-context')
-        searchContext = await res.json()
-    }
+    const searchContext: SearchContext = await fetchJson('/search-context')
 
     return {
         paths: searchContext.recipes.map((recipe) => ({ params: {
@@ -27,23 +24,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-    let config: RecetteConfig
-    {
-        const res = await fetch('http://localhost:3000/api/config')
-        config = await res.json()
-    }
-
-    let searchContext: SearchContext
-    {
-        const res = await fetch('http://localhost:3000/api/search-context')
-        searchContext = await res.json()
-    }
-    
-    let recipe: Recipe
-    {
-        const res = await fetch('http://localhost:3000/api/recipe/' + context.params!.category + '/' + context.params!.recipe)
-        recipe = await res.json()
-    }
+    const config: RecetteConfig = await fetchJson('/config')
+    const searchContext: SearchContext = await fetchJson('/search-context')
+    const recipe: Recipe = await fetchJson('/recipe/' + context.params!.category + '/' + context.params!.recipe)
 
     return { 
         props: { 

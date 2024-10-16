@@ -1,17 +1,19 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-function cleanSvg (svg) {
+function dirname (str: string) {
+    return path.dirname('.') + str
+}
+
+function cleanSvg (svg: string) {
     return svg
         .replace(/<svg[^>]*>/, '')
         .replace(/<\/svg>/, '')
         .replace(/fill="[^"]*"/g, '')
 }
 
-(async function fetchIcons () {
-    const fileNames = await fs.readdir(
-        path.dirname('.') + '/public/icons'
-    )
+export async function fetchIcons () {
+    const fileNames = await fs.readdir(dirname('/src/assets/icons'))
     
     const iconNames = fileNames.map(
         (fileName) => fileName.replace('.svg', '')
@@ -20,13 +22,13 @@ function cleanSvg (svg) {
     const iconSvgs = await Promise.all(
         fileNames.map(
             (fileName) => fs.readFile(
-                path.dirname('.') + '/public/icons/' + fileName, 
+                dirname(`/src/assets/icons/${fileName}`), 
                 'utf8'
             )
         )
     )
     
-    const icons = iconNames.map((iconName, index) => {
+    return iconNames.map((iconName, index) => {
         const iconSvg = iconSvgs[index]
     
         return {
@@ -34,9 +36,4 @@ function cleanSvg (svg) {
             svg: cleanSvg(iconSvg),
         }
     })
-
-    await fs.writeFile(
-        path.dirname('.') + '/src/assets/icons.json',
-        JSON.stringify(icons)
-    )
-})()
+}

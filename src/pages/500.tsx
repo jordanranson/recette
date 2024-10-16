@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next/types'
 
 import ErrorMeta from '@/components/meta/ErrorMeta'
 import RecetteError, { RecetteErrorProps } from '@/components/layouts/RecetteError'
+import { fetchJson } from '@/util/fetchJson'
 
 interface StaticProps {
     error: RecetteErrorProps['error']
@@ -10,17 +11,8 @@ interface StaticProps {
 }
 
 export const getStaticProps = (async () => {
-    let config: RecetteConfig
-    {
-        const res = await fetch('http://localhost:3000/api/config')
-        config = await res.json()
-    }
-
-    let searchContext: SearchContext
-    {
-        const res = await fetch('http://localhost:3000/api/search-context')
-        searchContext = await res.json()
-    }
+    const config: RecetteConfig = await fetchJson('/config')
+    const searchContext: SearchContext = await fetchJson('/search-context')
 
     const error = {
         status: 500,

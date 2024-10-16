@@ -2,9 +2,10 @@
   "name": "recette",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "node ./scripts/createIconsJson.mjs && next dev",
-    "build": "node ./scripts/createIconsJson.mjs && next build",
+    "dev": "tsx ./src/scripts/preBuild.ts && next dev",
+    "build": "tsx ./src/scripts/preBuild.ts && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -24,6 +25,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
+    "tsx": "^4.19.1",
     "typescript": "^5"
   }
 }

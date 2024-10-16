@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import TaxonomyMeta from '@/components/meta/TaxonomyMeta'
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
+import { fetchJson } from '@/util/fetchJson'
  
 interface StaticProps {
     taxonomy: TaxonomyItem
@@ -11,17 +12,8 @@ interface StaticProps {
 }
 
 export const getStaticProps = (async () => {
-    let config: RecetteConfig
-    {
-        const res = await fetch('http://localhost:3000/api/config')
-        config = await res.json()
-    }
-
-    let searchContext: SearchContext
-    {
-        const res = await fetch('http://localhost:3000/api/search-context')
-        searchContext = await res.json()
-    }
+    const config: RecetteConfig = await fetchJson('/config')
+    const searchContext: SearchContext = await fetchJson('/search-context')
 
     const taxonomy: TaxonomyItem = {
         title: 'All Tags',

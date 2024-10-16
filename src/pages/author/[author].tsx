@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import TaxonomyMeta from '@/components/meta/TaxonomyMeta'
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
+import { fetchJson } from '@/util/fetchJson'
 
 interface StaticProps {
     author: AuthorItem
@@ -12,11 +13,7 @@ interface StaticProps {
 }
 
 export const getStaticPaths = (async () => {
-    let searchContext: SearchContext
-    {
-        const res = await fetch('http://localhost:3000/api/search-context')
-        searchContext = await res.json()
-    }
+    const searchContext: SearchContext = await fetchJson('/search-context')
 
     const authors = searchContext.authors.map((author) => author.id)
 
@@ -27,18 +24,17 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-    let config: RecetteConfig
-    {
-        const res = await fetch('http://localhost:3000/api/config')
-        config = await res.json()
-    }
+    const config: RecetteConfig = await fetchJson('/config')
 
     let author: AuthorItem
     let taxonomy: TaxonomyItem
     let searchContext: SearchContext
     {
-        const res = await fetch('http://localhost:3000/api/taxonomy/author/' + context.params!.author)
-        const result = await res.json()
+        const result = await fetchJson<{
+            author: AuthorItem,
+            taxonomy: TaxonomyItem,
+            searchContext: SearchContext
+        }>('/author/' + context.params!.author)
 
         author = result.author
         taxonomy = result.taxonomy
