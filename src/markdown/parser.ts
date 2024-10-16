@@ -37,7 +37,6 @@ export function parseAttributesFromYaml (yamlString: string) {
     const requiredKeys = [
         'title',
         'summary',
-        'version',
         'author',
         'tags',
         'created',

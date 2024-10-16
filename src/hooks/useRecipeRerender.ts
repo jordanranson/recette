@@ -1,25 +1,36 @@
-import { Dispatch, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
-import { debounce } from '@/util/debounce'
-import { splitRecipeParts, parseContentFromMarkdown } from '@/markdown/parser'
-import { AppState, AppStateAction } from '@/hooks//useAppState'
-
-export function useRecipeRerender (state: AppState, dispatch: Dispatch<AppStateAction>) {
+export function useRecipeRerender (checksum: string, categoryId: string, recipeId: string) {
     const firstRenderRef = useRef(true)
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
     
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(debounce(() => {
+    useEffect(() => {
+        const poll = async () => {
+            if (process.env.NODE_ENV !== 'development') return;
+        
+            const res = await fetch(`/api/regenerate/test-recipe?checksum=${checksum}&categoryId=${categoryId}&recipeId=${recipeId}`)
+            const { contentChanged } = await res.json() as {
+                contentChanged: boolean,
+            }
+
+            if (contentChanged) {
+                await fetch(`/api/regenerate/write-json`)
+                window.location.reload()
+                return
+            }
+
+            timeoutRef.current = setTimeout(poll, 1000)
+        }
+
+
         if (firstRenderRef.current) {
             firstRenderRef.current = false
-            return
+            if (timeoutRef.current) clearTimeout(timeoutRef.current)
+            poll()
         }
-        
-        const parts = splitRecipeParts(state.recipe.raw)
-        const { html } = parseContentFromMarkdown(parts[1])
 
-        dispatch({
-            type: 'SET_CONTENT',
-            value: { html }
-        })
-    }, 100), [ state.recipe ])
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        }
+    })
 }

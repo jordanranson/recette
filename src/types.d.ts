@@ -29,7 +29,6 @@ declare interface RecipeAttributes {
     title: string
     description: string
     summary: string
-    version: string
     author: string
     tags: string[]
     categoryId?: string

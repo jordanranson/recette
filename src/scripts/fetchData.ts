@@ -2,9 +2,18 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { parseRecipe } from '@/markdown/parser'
 import { toId, toTitle } from '@/util/strings'
+import { sha256 } from '@/util/crypto'
 
 function dirname (str: string) {
     return path.dirname('.') + str
+}
+
+export async function fetchRecipeChecksum (category: string, recipe: string) {
+    const filePath = dirname(`/recipes/${category}/${recipe}.md`)
+    const raw = await fs.readFile(filePath, 'utf8')
+    const checksum = await sha256(raw)
+
+    return checksum
 }
 
 export async function fetchRecipe (category: string, recipe: string) {

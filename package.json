@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx ./src/scripts/preBuild.ts && next dev",
-    "build": "tsx ./src/scripts/preBuild.ts && next build",
+    "build": "tsx ./src/scripts/preBuild.ts && next build && tsx ./src/scripts/postBuild.ts",
     "start": "next start",
     "lint": "next lint"
   },

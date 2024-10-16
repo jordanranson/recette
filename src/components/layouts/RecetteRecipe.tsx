@@ -1,6 +1,7 @@
 import styles from './RecetteRecipe.module.sass'
 
 import React, { HTMLAttributes } from 'react'
+import { useRouter } from 'next/router'
 
 import { useAppState } from '@/hooks/useAppState'
 import { useThemes } from '@/hooks/useThemes'
@@ -14,16 +15,22 @@ import RecipeIngredients from '../RecipeIngredients'
 import RecipeContent from '../RecipeContent'
 
 export interface RecetteProps extends HTMLAttributes<HTMLDivElement> {
+    checksum: string
     recipe: Recipe
     config: RecetteConfig
     searchContext: SearchContext
 }
 
 export default function Recette (props: RecetteProps) {
+    const router = useRouter()
     const [ appState, dispatchAppState ] = useAppState(props.recipe)
 
     useThemes(appState.settings.theme)
-    useRecipeRerender(appState, dispatchAppState)
+
+    const parts = router.asPath.split('/')
+    const recipeId = parts.pop() as string
+    const categoryId = parts.pop() as string
+    useRecipeRerender(props.checksum, categoryId, recipeId)
 
     return (
         <main className={styles['RecetteRecipe']}>

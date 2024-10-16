@@ -1,9 +1,8 @@
 ---
-title: Recette Recipe
-description: An recipe created with Recette
+title: My Recette Recipe
+description: A recipe created with Recette
 summary: >
     My recipes's summary
-version: 1.0.0
 author: Jordan
 tags: drink, recipe
 created: 2024-01-01
