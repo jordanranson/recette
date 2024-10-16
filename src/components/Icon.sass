@@ -1,0 +1,47 @@
+.Icon
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    position: relative
+    user-select: none
+    width: var(--icon-size-regular)
+    height: var(--icon-size-regular)
+    
+    svg
+        width: var(--icon-size-regular)
+        height: var(--icon-size-regular)
+        fill: var(--font-color)
+        transform-origin: center
+
+    &--size-small
+        width: var(--icon-size-small)
+        height: var(--icon-size-small)
+
+        svg
+            transform: scale(0.75)
+
+    &--size-regularSmall
+        width: var(--icon-size-regularSmall)
+        height: var(--icon-size-regularSmall)
+
+        svg
+            transform: scale(0.875)
+    
+    &--size-large
+        width: var(--icon-size-large)
+        height: var(--icon-size-large)
+
+        svg
+            transform: scale(1.5)
+
+.button.button--primary.IconButton
+    border: none
+    appearance: none
+    display: inline-flex
+    padding: 0.6rem
+    height: auto
+    border-radius: 7px
+    background-color: var(--border-color)
+
+    svg
+        fill: var(--button-font-color)

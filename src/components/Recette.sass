@@ -1,0 +1,34 @@
+@import '../../styles/util'
+
+.Recette
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+
+    > header
+        height: 4rem
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 0 var(--size-regular)
+
+    > div
+        width: 100%
+        margin: 0 auto
+        padding: var(--size-large) var(--size-regular)
+
+        > main
+            display: flex
+            flex-direction: column
+            flex: 1
+            width: 100%
+            max-width: 500px
+            margin: 0 auto
+
+            > article
+                flex: 1
+                margin: 0 auto
+                width: 100%
+
+            > footer
+                margin-top: var(--size-large)

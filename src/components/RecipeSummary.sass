@@ -1,0 +1,38 @@
+.RecipeSummary
+    box-sizing: border-box
+
+a[href].RecipeSummary__Category
+    display: inline-block
+    font-size: var(--font-size-regularSmall)
+    font-weight: var(--font-weight-semibold)
+    color: var(--font-color-regular)
+    letter-spacing: 4px
+    border-bottom: solid 2px var(--border-color)
+    padding-bottom: 4px
+    transition: border-color 0.1s, color 0.1s
+    text-transform: uppercase
+
+    &:hover
+        color: var(--font-color-heavy)
+        border-color: var(--button-border-color-hover)
+
+    &:active
+        transform: translateY(1px)
+
+.RecipeSummary__About
+    white-space: nowrap
+    
+    dt
+        float: left
+        width: 35%
+        font-weight: var(--font-weight-semibold)
+        color: var(--font-color-heavy)
+
+    dd
+        margin-bottom: var(--size-small)
+
+.RecipeSummary__Tags
+    margin: -0.2rem
+    
+    > a
+        margin: 0.2rem

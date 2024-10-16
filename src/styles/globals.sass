@@ -1,0 +1,122 @@
+@import 'util'
+    
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+html
+    font-size: 16px
+    font-synthesis: none
+    text-rendering: optimizeLegibility
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    -webkit-text-size-adjust: 100%
+
+body
+    color: var(--font-color)
+    background-color: var(--body-bg-color)
+    font-family: var(--font-family)
+    font-weight: var(--font-weight-regular)
+    letter-spacing: 0.4px
+    line-height: 1.4
+    user-select: none
+    max-width: 100svw
+    min-height: 100svh
+    overflow-x: hidden
+
+input
+    color: inherit
+    font-family: var(--font-family)
+    font-weight: var(--font-weight-regular)
+
+a
+    text-decoration: none
+
+em
+    font-style: italic
+
+hr
+    margin: var(--size-large) auto
+    border: none
+    border-bottom: solid 1px var(--border-color-heavy)
+    position: relative
+    overflow: visible
+
+    &::after
+        content: '&'
+        display: block
+        position: absolute
+        top: -0.1rem
+        left: 50%
+        transform: translate(-50%, -50%)
+        color: var(--font-color-light)
+        font-family: var(--font-family-title)
+        font-size: 1.25rem
+        line-height: 1
+        font-weight: lighter
+        padding: 2px
+        background: var(--body-bg-color)
+
+
+h1
+    font-family: var(--font-family-title)
+    font-weight: 700
+    font-size: 48px
+    color: var(--font-color-heavy)
+    line-height: 1.1
+    letter-spacing: normal
+
+h2
+    font-size: var(--font-size-medium)
+
+.--hide
+    display: none !important
+
+// .--blSmall
+//     @include isSmallDevice
+//         display: block !important
+
+// .--blMedium
+//     @include isMediumDevice
+//         display: block !important
+
+// .--blWide
+//     @include isWideDevice
+//         display: block !important
+
+// .--inBlSmall
+//     @include isSmallDevice
+//         display: inline-block !important
+
+// .--inBlMedium
+//     @include isMediumDevice
+//         display: inline-block !important
+
+// .--inBlWide
+//     @include isWideDevice
+//         display: inline-block !important
+
+// .--flSmall
+//     @include isSmallDevice
+//         display: flex !important
+
+// .--flMedium
+//     @include isMediumDevice
+//         display: flex !important
+
+// .--flWide
+//     @include isWideDevice
+//         display: flex !important
+
+.--inFlSmall
+    @include isSmallDevice
+        display: inline-flex !important
+
+.--inFlMedium
+    @include isMediumDevice
+        display: inline-flex !important
+
+.--inFlWide
+    @include isWideDevice
+        display: inline-flex !important

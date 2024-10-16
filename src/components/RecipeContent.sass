@@ -1,0 +1,53 @@
+.RecipeContent
+    box-sizing: border-box
+
+    p,
+    ol,
+    ul
+        margin: var(--size-small) 0
+ 
+    a[href]
+        display: inline-flex
+        color: var(--link-color)
+        font-weight: var(--font-weight-semibold)
+        transition: opacity 0.1s
+
+        &:hover,
+        &:active
+            opacity: 0.5
+
+        &:active
+            transform: translateY(1px)
+
+    ol
+        list-style-type: decimal
+        list-style-position: inside
+        margin: var(--size-small) 0
+
+        li
+            margin: var(--size-small) 0
+
+            p
+                display: inline-block
+
+            &::marker
+                float: left
+
+    h2,
+    h3,
+    h4
+        margin-top: var(--size-medium)
+        font-size: var(--font-size-regular)
+        font-weight: var(--font-weight-semibold)
+        color: var(--font-color-heavy)
+
+    h5
+        font-size: var(--font-size-regularSmall)
+        opacity: 0.65
+
+    img
+        max-width: 100%
+        height: auto
+        border: solid 1px var(--border-color-heavy)
+        padding: var(--size-small)
+

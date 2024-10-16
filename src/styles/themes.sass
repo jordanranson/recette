@@ -1,0 +1,150 @@
+@mixin lightTheme
+    color-scheme: light
+
+    // Background colours
+    --body-bg-color: var(--l-body-bg-color)
+    --panel-bg-color: var(--l-panel-bg-color)
+    --icon-bg-color: var(--l-icon-bg-color)
+
+    // Font colours
+    --font-color: var(--l-font-color-regular)
+    --font-color-light: var(--l-font-color-light)
+    --font-color-heavy: var(--l-font-color-heavy)
+    --link-color: var(--l-primary-color)
+
+    // Border colours
+    --border-color: var(--l-border-color)
+    --border-color-heavy: var(--l-border-color-heavy)
+
+    // Button colours
+    --button-bg-color: var(--l-border-color)
+    --button-font-color: var(--l-primary-color)
+    --button-font-color-disabled: var(--l-font-color-light)
+    --button-border-color-hover: var(--l-primary-color-light)
+    --button-border-color-disabled: var(--l-border-color)
+
+    // Input colours
+    --input-bg-color: var(--l-input-bg-color)
+    --input-bg-color-focus: var(--l-input-bg-color-focus)
+    --input-font-color: var(--l-font-color-regular)
+    --input-font-color-focus: var(--l-font-color-heavy)
+    --input-font-color-disabled: var(--l-font-color-light)
+    --input-border-color: var(--l-border-color-heavy)
+    --input-border-color-hover: var(--l-font-color-light)
+    --input-border-color-focus: var(--l-primary-color-light)
+    
+    // Misc. values
+    --modal-overlay-color: var(--l-modal-overlay-color)
+    --modal-shadow: var(--l-modal-shadow)
+    --panel-border-color: var(--l-border-color)
+    --panel-shadow: var(--l-panel-shadow)
+
+
+
+@mixin darkTheme
+    color-scheme: dark
+
+    // Background colours
+    --body-bg-color: var(--d-body-bg-color)
+    --panel-bg-color: var(--d-panel-bg-color)
+    --icon-bg-color: var(--d-icon-bg-color)
+
+    // Font colours
+    --font-color: var(--d-font-color-regular)
+    --font-color-light: var(--d-font-color-light)
+    --font-color-heavy: var(--d-font-color-heavy)
+    --link-color: var(--d-primary-color)
+
+    // Border colours
+    --border-color: var(--d-border-color)
+    --border-color-heavy: var(--d-border-color-heavy)
+
+    // Button colours
+    --button-bg-color: var(--d-border-color)
+    --button-font-color: var(--d-font-color-regular)
+    --button-font-color-disabled: var(--d-font-color-light)
+    --button-border-color-hover: var(--d-primary-color)
+    --button-border-color-disabled: var(--d-border-color)
+
+    // Input colours
+    --input-bg-color: var(--d-input-bg-color)
+    --input-bg-color-focus: var(--d-input-bg-color-focus)
+    --input-font-color: var(--d-font-color-regular)
+    --input-font-color-focus: var(--d-font-color-heavy)
+    --input-font-color-disabled: var(--d-font-color-light)
+    --input-border-color: var(--d-border-color-heavy)
+    --input-border-color-hover: var(--d-font-color-light)
+    --input-border-color-focus: var(--d-primary-color)
+    
+    // Misc. values
+    --modal-overlay-color: var(--d-modal-overlay-color)
+    --modal-shadow: var(--d-modal-shadow)
+    --panel-border-color: var(--d-input-bg-color)
+    --panel-shadow: var(--d-panel-shadow)
+
+
+
+body
+    /* 
+     * Shared values
+     */
+
+    // Font values
+    --font-family: 'Cabin', sans-serif
+    --font-family-title: 'Playfair Display', serif
+    --font-weight-regular: 300
+    --font-weight-medium: 400
+    --font-weight-semibold: 500
+    --font-size-small: 0.75rem
+    --font-size-regularSmall: 0.875rem
+    --font-size-regular: 1rem
+    --font-size-medium: 1.125rem
+    --font-size-large: 1.5rem
+
+    // Input values
+    --input-height: 1.563rem
+    --input-height-large: 2.813rem
+    --input-height-grouped: 3.75rem
+    --input-width-short: 100px
+    --input-width: 160px
+    --input-width-large: 300px
+    --input-width-grouped: 300px
+    --button-height-small: 1.25rem
+    --button-height-large: 2.188rem
+
+    // Spacing, margins, and padding
+    --size-verySmall: 0.313rem
+    --size-small: 0.625rem
+    --size-regular: 0.938rem
+    --size-medium: 1.75rem
+    --size-large: 3.125rem   
+    --size-veryLarge: 6.25rem  
+
+    // Icon sizes
+    --icon-size-small: 0.75rem    
+    --icon-size-regularSmall: 0.875rem  
+    --icon-size-regular: 1rem   
+    --icon-size-large: 1.5rem  
+
+    // Misc. values
+    --panel-border-radius: 0.438rem 
+    --input-border-radius: 0.375rem 
+    --button-border-radius: 10rem 
+
+    /*
+     * Light / dark modes
+     */
+
+    @include lightTheme
+    
+    @media (prefers-color-scheme: light)
+        @include lightTheme
+
+    @media (prefers-color-scheme: dark)
+        @include darkTheme
+    
+    &[data-theme='light']
+        @include lightTheme
+        
+    &[data-theme='dark']
+        @include darkTheme

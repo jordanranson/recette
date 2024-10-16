@@ -1,0 +1,61 @@
+body {
+    /*
+     * Light theme colours
+     */
+
+    /* // Brand colours */
+    --l-primary-color: #FF003D;
+    --l-primary-color-light: #FFA3B9;
+
+    /* // Background colours */
+    --l-body-bg-color: #FFFBFC;
+    --l-panel-bg-color: #FFFFFF;
+
+    /* // Border colours */
+    --l-border-color: #FFE9EF;
+    --l-border-color-heavy: #D6D5D0;
+
+    /* // Font colours */
+    --l-font-color-light: #C0B6B8;
+    --l-font-color-regular: #614E53;
+    --l-font-color-heavy: #4B3239;
+
+    /* // Input colours */
+    --l-input-bg-color: #F6F6F6;
+
+    /* // Misc. values */
+    --l-modal-overlay-color: rgba(0, 0, 0, 0.5);
+    --l-modal-shadow: 0 7px 21px rgba(0, 0, 0, 0.05);
+    --l-panel-shadow: 0 3px 7px  rgba(0, 0, 0, 0.05);
+
+
+
+    /*
+     * Dark theme colours
+     */
+    
+    /* // Brand colours */
+    --d-primary-color: #F32B5B;
+    --d-primary-color-light: #981C3A;
+
+    /* // Background colours */
+    --d-body-bg-color: #44222C;
+    --d-panel-bg-color: #3D1F28;
+
+    /* // Border colours */
+    --d-border-color: #981C3A;
+    --d-border-color-heavy: #7B6168;
+
+    /* // Font colours */
+    --d-font-color-light: #947C82;
+    --d-font-color-regular: #FFEDF1;
+    --d-font-color-heavy: #FFEDF1;
+
+    /* // Input colours */
+    --d-input-bg-color: #55363F;
+
+    /* // Misc. values */
+    --d-modal-overlay-color: rgba(0, 0, 0, 0.5);
+    --d-modal-shadow: 0 7px 21px rgba(0, 0, 0, 0.05);
+    --d-panel-shadow: 0 3px 7px  rgba(0, 0, 0, 0.05);
+}

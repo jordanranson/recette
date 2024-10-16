@@ -1,0 +1,127 @@
+.label
+    font-size: var(--font-size-regularSmall)
+    font-weight: var(--font-weight-regular)
+    color: inherit
+    
+.input
+    position: relative
+    display: inline-flex
+
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        border: solid 1px var(--input-border-color)
+        font-size: var(--font-size-regularSmall)
+        background-color: var(--input-bg-color)
+        border-radius: var(--input-border-radius)
+        color: var(--input-font-color)
+        padding: 0 var(--size-small)
+        height: var(--input-height)
+        width: var(--input-width)
+        transition: border-color 0.1s, box-shadow 0.1s
+
+        &:hover
+            border-color: var(--input-border-color-hover)
+
+        &:active,
+        &:focus
+            border-color: var(--input-border-color-focus)
+            box-shadow: 0 0 0 1px var(--input-border-color-focus)
+            outline: none
+
+.input__icons
+    display: block
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: var(--size-small)
+    font-size: 0
+
+.input--search,
+.input--rounded
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        border-radius: var(--button-border-radius)
+
+.input--search
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        padding-left: 1.75rem
+
+    .input__icons
+        pointer-events: none
+        left: var(--size-small)
+        right: auto
+
+        svg
+            fill: var(--font-color-light)
+
+.input--large
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        font-size: var(--font-size-regular)
+        padding: 0 var(--size-regular)
+        height: var(--input-height-large)
+        width: var(--input-width-large)
+
+    &.input--search
+        > input,
+        > textarea,
+        > select,
+        > .input__inner
+            padding: 0 1rem 0 2.5rem
+
+        .input__icons
+            height: var(--icon-size-regular)
+
+            &:first-of-type
+                pointer-events: none
+                left: var(--size-regular)
+                right: auto
+
+            &:nth-of-type(2)
+                left: auto
+                right: var(--size-regular)
+
+.input--short
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        width: var(--input-width-short)
+
+.input--grouped
+    display: flex
+    position: relative
+    height: var(--input-height-grouped)
+    width: var(--input-width-grouped)
+
+    > .label
+        color: var(--font-color-light)
+        margin-bottom: var(--size-verySmall)
+        position: absolute
+        left: var(--size-regular)
+        top: var(--size-small)
+        pointer-events: none
+        transition: color 0.1s
+
+    > input,
+    > textarea,
+    > select,
+    > .input__inner
+        font-size: var(--font-size-regular)
+        padding: 0 var(--size-regular)
+        height: var(--input-height-grouped)
+        width: var(--input-width-grouped)
+        padding-top: 1rem
+
+        &:focus
+            + .label
+                color: var(--font-color)

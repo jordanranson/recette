@@ -1,0 +1,75 @@
+.button
+    font-size: var(--font-size-regularSmall)
+    text-decoration: none
+    appearance: none
+    border: none
+    background: none
+    font-family: inherit
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    transition: opacity 0.1s, box-shadow 0.1s
+
+    &:active
+        transform: translateY(1px)
+
+.button--link
+    position: relative
+    color: var(--link-color)
+    font-size: var(--font-size-regular)
+    font-weight: var(--font-weight-semibold)
+
+    &:hover,
+    &:active
+        opacity: 0.5
+
+.button--link--active
+    &::after
+        content: ''
+        position: absolute
+        bottom: -1px
+        left: 0
+        width: 100%
+        height: 2px
+        background-color: var(--link-color)
+
+.button--primary
+    background-color: var(--button-bg-color)
+    color: var(--button-font-color)
+    border-radius: var(--button-border-radius)
+    height: var(--input-height)
+    font-weight: var(--font-weight-semibold)
+    padding: 0 var(--size-small)
+
+    .Icon svg 
+        fill: var(--button-font-color)
+
+    &:hover
+        box-shadow: 0 0 0 2px var(--button-border-color-hover)
+
+    &:active
+        opacity: 0.85
+        transform: translateY(1px)
+    
+    &.button--disabled
+        background-color: transparent
+        color: var(--button-font-color-disabled)
+        border: solid 1px var(--button-border-color-disabled)
+        pointer-events: none
+
+.button--secondary
+    color: var(--font-color-heavy)
+    font-weight: var(--font-weight-medium)
+
+    &:hover,
+    &:active
+        opacity: 0.65
+
+.button--size-small
+    height: var(--button-height-small)
+
+.button--size-large
+    font-size: var(--font-size-regular)
+    padding: 0 var(--size-regular)
+    height: var(--button-height-large)

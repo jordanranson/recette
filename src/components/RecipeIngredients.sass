@@ -1,0 +1,33 @@
+.RecipeIngredients__List
+    li
+        margin: var(--size-small) 0
+
+        strong
+            font-weight: var(--font-weight-semibold)
+            color: var(--font-color-heavy)
+
+        label
+            cursor: pointer
+
+        label,
+        label > span:last-child
+            display: inline-flex
+            align-items: center
+
+        .checkbox
+            + .Level
+                transition: color 0.1s
+
+                a[href],
+                strong
+                    transition: opacity 0.1s, color 0.1s
+
+        .checkbox[data-checked=true]
+            + .Level
+                color: var(--font-color-light)
+                text-decoration: line-through
+
+                a[href],
+                strong
+                    color: var(--font-color-light)
+                    pointer-events: none

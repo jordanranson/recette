@@ -1,0 +1,18 @@
+$mediumSize: 768px
+$wideSize: 980px
+
+@mixin isSmallDevice
+    @media (max-width: #{$mediumSize})
+        @content
+
+@mixin isMediumDevice
+    @media (min-width: #{($mediumSize + 1px)}) and (max-width: #{$wideSize})
+        @content
+
+@mixin isAtLeastMediumDevice
+    @media (min-width: #{($mediumSize + 1px)})
+        @content
+
+@mixin isWideDevice
+    @media (min-width: #{($wideSize + 1px)})
+        @content

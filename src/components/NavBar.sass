@@ -1,0 +1,49 @@
+.NavBar
+    display: flex
+    align-items: center
+    max-width: 1920px
+    margin: 0 auto
+
+    > aside
+        display: flex
+        align-items: center
+
+    > nav
+        position: relative
+
+        .panel
+            position: absolute
+            margin-top: var(--size-regular)
+            padding: var(--size-regular)
+            top: 100%
+            left: 0
+            right: 0
+
+            a
+                display: block
+                font-size: var(--font-size-regularSmall)
+                line-height: 1.2
+                transition: color 0.1s, background-color 0.1s
+                cursor: pointer
+                padding: var(--size-small)
+                border-radius: 7px
+
+                h4,
+                p
+                    color: var(--font-color)
+                    margin: 0
+
+                h4
+                    font-weight: var(--font-weight-semibold)
+            
+                &:hover
+                    background-color: var(--border-color)
+                    h4,
+                    p
+                        color: var(--button-font-color)
+
+                &:active
+                    transform: translateY(1px)
+
+    > nav:not(:only-child)
+        margin: 0 var(--size-medium)
