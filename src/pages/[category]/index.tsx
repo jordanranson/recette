@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
-import RecetteTaxonomy from '@/components/RecetteTaxonomy'
+import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
  
 interface StaticProps {
     taxonomy: Taxonomy
@@ -58,16 +58,11 @@ export default function ListCategoryPage (props: StaticProps) {
             <meta name='viewport' content='width=device-width, initial-scale=1' />
             <link rel='icon' href='/icon.svg' />
         </Head>
-        {/* <RecetteTaxonomy
+        <RecetteTaxonomy
             taxonomy={props.taxonomy}
             config={props.config}
             searchContext={props.searchContext}
-        /> */}
-        <div>
-            <pre>{JSON.stringify(props.taxonomy, null, 4)}</pre>
-            <pre>{JSON.stringify(props.config, null, 4)}</pre>
-            <pre>{JSON.stringify(props.searchContext, null, 4)}</pre>
-        </div>
+        />
     </>
   )
 }

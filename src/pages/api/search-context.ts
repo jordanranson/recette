@@ -5,7 +5,7 @@ import { parseRecipe } from '@/markdown/parser'
 import { formatTaxonomyTitle } from '@/util/strings'
 
 interface Data {
-    recipes: RecipeFragment[]
+    recipes: RecipeItem[]
     taxonomies: Taxonomy[]
 }
 
@@ -29,7 +29,7 @@ export default async function handler(
                     description: attributes.description,
                     tags: attributes.tags.map(tag => tag.toLowerCase()),
                     categoryId: taxonomyPath
-                } as RecipeFragment
+                } as RecipeItem
             })
         )
     }))).flat()
@@ -38,9 +38,7 @@ export default async function handler(
         return {
             id: taxonomyPath,
             title: formatTaxonomyTitle(taxonomyPath),
-            recipes: recipes
-                .filter((recipe) => recipe.categoryId === taxonomyPath)
-                .map((recipe) => ({ id: recipe.id }))
+            recipes: recipes.filter((recipe) => recipe.categoryId === taxonomyPath)
         } as Taxonomy
     })
 

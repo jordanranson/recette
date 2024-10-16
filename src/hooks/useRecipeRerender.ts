@@ -1,7 +1,8 @@
 import { Dispatch, useEffect, useRef } from 'react'
-import { debounce } from '../../../util/debounce'
-import { splitRecipeParts, parseContentFromMarkdown } from '../../../markdown/parser'
-import { AppState, AppStateAction } from './useAppState'
+
+import { debounce } from '@/util/debounce'
+import { splitRecipeParts, parseContentFromMarkdown } from '@/markdown/parser'
+import { AppState, AppStateAction } from '@/hooks//useAppState'
 
 export function useRecipeRerender (state: AppState, dispatch: Dispatch<AppStateAction>) {
     const firstRenderRef = useRef(true)

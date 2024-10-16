@@ -1,13 +1,13 @@
-import './RecetteError.sass'
+import styles from './RecetteError.module.sass'
 
 import React, { HTMLAttributes } from 'react'
 
-import { useAppState } from '../hooks/useAppState'
-import { useThemes } from '../hooks/useThemes'
+import { useAppState } from '@/hooks/useAppState'
+import { useThemes } from '@/hooks/useThemes'
 
-import Block from './Block'
-import NavBar from './NavBar'
-import PageFooter from './PageFooter'
+import Block from '../Block'
+import NavBar from '../NavBar'
+import PageFooter from '../PageFooter'
 
 export interface RecetteErrorProps extends HTMLAttributes<HTMLDivElement> {
     error: RenderError
@@ -21,7 +21,7 @@ export default function RecetteError (props: RecetteErrorProps) {
     useThemes(appState.settings.theme)
 
     return (
-        <main className='RecetteError'>
+        <main className={styles['RecetteError']}>
 
             <header>
                 <NavBar 

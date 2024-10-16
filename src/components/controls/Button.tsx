@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react'
+import Link from 'next/link'
 import clsx from 'clsx'
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
@@ -54,8 +55,8 @@ export function LinkButton (props: LinkButtonProps) {
     })
 
     return (
-        <a className={className} href={props.href}>
+        <Link className={className} href={props.href}>
             {props.children}
-        </a>
+        </Link>
     )
 }

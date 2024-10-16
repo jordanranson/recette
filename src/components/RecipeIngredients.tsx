@@ -1,11 +1,11 @@
-import './RecipeIngredients.sass'
-
 import React, { HTMLAttributes } from 'react'
+import Link from 'next/link'
+
+import { ifThen, forEach, ifElse } from '@/util/controlFlow'
 
 import { Checkbox } from './controls/Checkbox'
 import Block from './Block'
 import Level from './Level'
-import { ifThen, forEach, ifElse } from '../../util/controlFlow'
 import Icon from './Icon'
 
 function formatFraction (value: number) {
@@ -53,7 +53,7 @@ function RecipeIngredientBlock (props: RecipeIngredientBlockProps) {
                                             ifElse(
                                                 ingredient.link, 
                                                 () => (
-                                                    <a href={ingredient.link} className='button button--link'>{ingredient.name}</a>
+                                                    <Link href={ingredient.link!} className='button button--link'>{ingredient.name}</Link>
                                                 ), () => (
                                                     <span>{ingredient.name}</span>
                                                 )

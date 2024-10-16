@@ -1,14 +1,15 @@
-import './RecetteTaxonomy.sass'
+import styles from './RecetteTaxonomy.module.sass'
 
 import React, { HTMLAttributes } from 'react'
+import Link from 'next/link'
 
-import { forEach, ifElse } from '../../util/controlFlow'
-import { useAppState } from '../hooks/useAppState'
-import { useThemes } from '../hooks/useThemes'
+import { forEach, ifElse } from '@/util/controlFlow'
+import { useAppState } from '@/hooks/useAppState'
+import { useThemes } from '@/hooks/useThemes'
 
-import Block from './Block'
-import NavBar from './NavBar'
-import PageFooter from './PageFooter'
+import Block from '../Block'
+import NavBar from '../NavBar'
+import PageFooter from '../PageFooter'
 
 export interface RecetteTaxonomyProps extends HTMLAttributes<HTMLDivElement> {
     taxonomy: Taxonomy
@@ -22,7 +23,7 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
     useThemes(appState.settings.theme)
 
     return (
-        <main className='RecetteTaxonomy'>
+        <main className={styles['RecetteTaxonomy']}>
 
             <header>
                 <NavBar 
@@ -40,7 +41,7 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                             <h1>{props.taxonomy.title}</h1>
                         </Block>
                         <Block size='medium'>
-                            <ul className='RecetteTaxonomy__List'>
+                            <ul className={styles['RecetteTaxonomy__List']}>
                                 {
                                     ifElse(
                                         props.taxonomy.root, 
@@ -48,7 +49,7 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                                             <>
                                                 {
                                                     forEach(props.searchContext.taxonomies, (taxonomy) => (
-                                                        <a className='panel' href={'/' + taxonomy.path} key={taxonomy.path}>
+                                                        <Link className='panel' href={'/' + taxonomy.id} key={taxonomy.id}>
                                                             <li>
                                                                 <h2>{taxonomy.title}</h2>
                                                                 <p>
@@ -56,7 +57,7 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                                                                     <span>recipes</span>
                                                                 </p>
                                                             </li>
-                                                        </a>
+                                                        </Link>
                                                     ))
                                                 }
                                             </>
@@ -65,12 +66,12 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                                             <>
                                                 {
                                                     forEach(props.taxonomy.recipes, (recipe) => (
-                                                        <a className='panel' href={'/' + recipe.path} key={recipe.path}>
+                                                        <Link className='panel' href={'/' + recipe.categoryId + '/' + recipe.id} key={recipe.id}>
                                                             <li>
                                                                 <h2>{recipe.title}</h2>
                                                                 <p>{recipe.description}</p>
                                                             </li>
-                                                        </a>
+                                                        </Link>
                                                     ))
                                                 }
                                             </>

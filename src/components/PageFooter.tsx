@@ -1,9 +1,9 @@
-import './PageFooter.sass'
-
 import React from 'react'
+
+import { forEach, ifThen } from '@/util/controlFlow'
+
 import Block from './Block'
 import Level from './Level'
-import { forEach, ifThen } from '../../util/controlFlow'
 
 interface PageFooterProps {
     config: RecetteConfig
@@ -18,7 +18,7 @@ export default function PageFooter (props: PageFooterProps) {
                         <Level size='small'>
                             {
                                 forEach(props.config.template.footerLinks, (link, index) => (
-                                    <a key={index} href={link.href} className='button button--link text-small'>
+                                    <a key={index} href={link.link} className='button button--link text-small'>
                                         {link.text}
                                     </a>
                                 ))

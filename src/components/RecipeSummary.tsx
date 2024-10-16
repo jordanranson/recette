@@ -1,10 +1,10 @@
-import './RecipeSummary.sass'
-
 import React, { HTMLAttributes } from 'react'
+import Link from 'next/link'
+
+import { forEach, ifThen } from '@/util/controlFlow'
 
 import Block from './Block'
 import { LinkButton } from './controls/Button'
-import { forEach, ifThen } from '../../util/controlFlow'
 
 const ABOUT_ITEM_KEYS = [
     'caloriesPerServing',
@@ -53,9 +53,9 @@ export default function RecipeSummary (props: RecipeSummaryProps) {
     return (
         <div className='RecipeSummary'>
             {
-                ifThen(props.attributes.taxonomy, () => (
+                ifThen(props.attributes.categoryId, () => (
                     <Block size='medium'>
-                        <a href={`/${props.attributes.taxonomy}`} className='RecipeSummary__Category'>{props.attributes.taxonomy?.replace(/_-\./g, ' ')}</a>
+                        <Link href={`/${props.attributes.categoryId}`} className='RecipeSummary__Category'>{props.attributes.categoryId?.replace(/_-\./g, ' ')}</Link>
                     </Block>
                 ))
             }

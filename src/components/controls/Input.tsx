@@ -1,8 +1,10 @@
 import React, { HTMLAttributes, useState } from 'react'
 import clsx from 'clsx'
-import { ifElse, ifThen } from '../../../util/controlFlow'
+
+import { ifElse, ifThen } from '@/util/controlFlow'
+import { useClickToFocus } from '@/hooks/useClickToFocus'
+
 import Icon from '../Icon'
-import { useClickToFocus } from '../../hooks/useClickToFocus'
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
     type?: 'text' | 'email' | 'search'

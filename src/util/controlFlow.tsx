@@ -8,10 +8,10 @@ export function ifThen (condition: any, trueValue: () => JSX.Element) {
     return !!condition ? trueValue() : <></>
 }
 
-export function forEach (array: any[], callback: (value: any, index: number) => JSX.Element) {
+export function forEach <T = any> (array: T[], callback: (value: T, index: number) => JSX.Element) {
     return array.map(callback)
 }
 
-export function forEachKey (record: Record<string, any>, callback: (value: any, key: string) => JSX.Element) {
+export function forEachKey <T = any> (record: Record<string, T>, callback: (value: T, key: string) => JSX.Element) {
     return Object.entries(record).map(([key, value]) => callback(value, key))
 }

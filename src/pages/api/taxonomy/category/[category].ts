@@ -32,6 +32,7 @@ export default async function handler(
                 title: attributes.title,
                 description: attributes.description,
                 tags: attributes.tags.map(tag => tag.toLowerCase()),
+                categoryId: category
             }
         })
     )

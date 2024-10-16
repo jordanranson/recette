@@ -1,15 +1,16 @@
-import './NavBar.sass'
-
 import React, { HTMLAttributes, useEffect, useState } from 'react'
+import Link from 'next/link'
+
+import { forEach, ifElse, ifThen } from '@/util/controlFlow'
+import { AppState, AppStateAction } from '@/hooks/useAppState'
+
 import { JumboSearch } from './controls/JumboSearch'
 import { IconButton, IconButtonLink } from './Icon'
-import { forEach, ifElse, ifThen } from '../../util/controlFlow'
 import Level from './Level'
-import { AppState, AppStateAction } from '../hooks/useAppState'
 
 function useSearch (searchContext: SearchContext, taxonomy?: string) {
     const [ query, setQuery ] = useState('')
-    const [ results, setResults ] = useState<RecipeFragment[]>([])
+    const [ results, setResults ] = useState<RecipeItem[]>([])
 
     useEffect(() => {
         const onSearch = () => {
@@ -68,13 +69,13 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
         if (!found) {
             const index = Math.round(Math.random() * (searchContext.recipes.length - 1))
             const recipe = searchContext.recipes[index]
-            window.location.href = '/' + recipe.id
+            window.location.href = '/' + recipe.categoryId + '/' + recipe.id
             return
         }
 
         const index = Math.round(Math.random() * (found.recipes.length - 1))
         const recipe = found.recipes[index]
-        window.location.href = '/' + recipe.id
+        window.location.href = '/' + recipe.categoryId + '/' + recipe.id
     }
 
     return {
@@ -148,11 +149,11 @@ export default function NavBar (props: NavBarProps) {
                             <ul>
                                 {
                                     forEach(results, (recipe) => (
-                                        <li key={recipe.path}>
-                                            <a href={'/' + recipe.path}>
+                                        <li key={recipe.id}>
+                                            <Link href={'/' + recipe.categoryId + '/' + recipe.id}>
                                                 <h4>{recipe.title}</h4>
                                                 <p>{recipe.description}</p>
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))
                                 }

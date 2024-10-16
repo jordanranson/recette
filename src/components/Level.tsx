@@ -1,5 +1,3 @@
-import './Level.sass'
-
 import React, { HTMLAttributes } from 'react'
 import clsx from 'clsx'
 

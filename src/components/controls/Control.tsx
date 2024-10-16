@@ -1,5 +1,5 @@
-import React from 'react'
-import { HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
+
 import Block from '../Block'
 import Level from '../Level'
 

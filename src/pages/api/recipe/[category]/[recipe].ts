@@ -26,6 +26,9 @@ export default async function handler(
         .json({ 
             raw, 
             content: parsed.html, 
-            attributes: parsed.attributes
+            attributes: {
+                ...parsed.attributes,
+                categoryId: req.query.category as string,
+            },
         })
 }

@@ -1,5 +1,3 @@
-import './RecipeContent.sass'
-
 import React, { HTMLAttributes } from 'react'
 
 import Block from './Block'

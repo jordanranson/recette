@@ -1,17 +1,17 @@
-import './Recette.sass'
+import styles from './RecetteRecipe.module.sass'
 
 import React, { HTMLAttributes } from 'react'
 
-import { useAppState } from '../hooks/useAppState'
-import { useThemes } from '../hooks/useThemes'
-import { useRecipeRerender } from '../hooks/useRecipeRerender'
+import { useAppState } from '@/hooks/useAppState'
+import { useThemes } from '@/hooks/useThemes'
+import { useRecipeRerender } from '@/hooks/useRecipeRerender'
 
-import Block from './Block'
-import NavBar from './NavBar'
-import PageFooter from './PageFooter'
-import RecipeSummary from './RecipeSummary'
-import RecipeIngredients from './RecipeIngredients'
-import RecipeContent from './RecipeContent'
+import Block from '../Block'
+import NavBar from '../NavBar'
+import PageFooter from '../PageFooter'
+import RecipeSummary from '../RecipeSummary'
+import RecipeIngredients from '../RecipeIngredients'
+import RecipeContent from '../RecipeContent'
 
 export interface RecetteProps extends HTMLAttributes<HTMLDivElement> {
     recipe: Recipe
@@ -26,11 +26,11 @@ export default function Recette (props: RecetteProps) {
     useThemes(appState.settings.theme)
 
     return (
-        <main className='Recette'>
+        <main className={styles['RecetteRecipe']}>
 
             <header>
                 <NavBar 
-                    taxonomy={appState.recipe.attributes.taxonomy}
+                    taxonomy={appState.recipe.attributes.categoryId}
                     searchContext={props.searchContext} 
                     appState={appState}
                     dispatchAppState={dispatchAppState}

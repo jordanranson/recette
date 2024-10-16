@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-
-import './Icon.sass'
+import Link from 'next/link'
 
 export interface IconProps extends HTMLAttributes<HTMLDivElement | HTMLButtonElement> {
     name: string
@@ -32,11 +31,11 @@ export function IconButton (props: IconProps) {
 
 export function IconButtonLink (props: IconProps & { href: string }) {
     return (
-        <a href={props.href} className='button button--primary IconButton'>
+        <Link href={props.href} className='button button--primary IconButton'>
             <Icon 
                 name={props.name}
                 size={props.size}
             />
-        </a>
+        </Link>
     )
 }

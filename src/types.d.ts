@@ -10,6 +10,7 @@ declare type CustomElement<T, K extends string> =
     { name: string } & CustomEvents<`on${K}`>>
 
 
+
 // Recipe Types
 
 declare interface RecetteConfig {
@@ -45,7 +46,7 @@ declare interface RecipeAttributes {
     author: string
     authorLink: string
     tags: string[]
-    taxonomy?: string
+    categoryId?: string
     created: Date
     modified: Date
     yield?: number
@@ -57,6 +58,15 @@ declare interface RecipeAttributes {
     ingredients: RecipeIngredient[] | Record<string, RecipeIngredient[]>
 }
 
+declare interface RecipeItem {
+    title: string
+    description: string
+    id: string
+    tags: string[]
+    categoryId: string
+}
+
+
 
 // SSR
 
@@ -67,22 +77,14 @@ declare interface RenderError {
     error: string
 }
 
-declare interface RecipeFragment {
-    title: string
-    description: string
-    id: string
-    tags: string[]
-    categoryId?: string
-}
-
 declare interface Taxonomy {
     id: string
     title: string
+    recipes: RecipeItem[]
     root?: boolean
-    recipes: RecipeFragment[]
 }
 
 declare interface SearchContext {
-    recipes: RecipeFragment[]
+    recipes: RecipeItem[]
     taxonomies: Taxonomy[]
 }

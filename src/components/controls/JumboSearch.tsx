@@ -1,5 +1,5 @@
-import React from 'react'
-import { HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
+
 import { SearchInput } from './Input'
 
 interface JumboSearchProps extends HTMLAttributes<HTMLDivElement> {

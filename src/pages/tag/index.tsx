@@ -10,7 +10,7 @@ export default function ListTagPage () {
         <link rel='icon' href='/icon.svg' />
       </Head>
       <div>
-        Hello, world.
+        List of Tags
       </div>
     </>
   )
