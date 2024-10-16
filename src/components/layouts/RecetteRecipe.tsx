@@ -33,7 +33,7 @@ export default function Recette (props: RecetteProps) {
     useRecipeRerender(props.checksum, categoryId, recipeId)
 
     return (
-        <main className={styles['RecetteRecipe']}>
+        <div className={styles['RecetteRecipe']}>
 
             <header>
                 <NavBar 
@@ -71,6 +71,6 @@ export default function Recette (props: RecetteProps) {
                 </main>
             </div>
             
-        </main>
+        </div>
     )
 }

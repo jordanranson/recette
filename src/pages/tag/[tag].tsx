@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import TaxonomyMeta from '@/components/meta/TaxonomyMeta'
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
 import { fetchJson } from '@/util/fetchJson'
+import { writeJson } from '@/scripts/writeJson'
  
 interface StaticProps {
     taxonomy: TaxonomyItem
@@ -23,6 +24,10 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
+    if (process.env.NODE_ENV === 'development') {
+        await writeJson()
+    }
+    
     const config: RecetteConfig = await fetchJson('/config')
 
     let taxonomy: TaxonomyItem

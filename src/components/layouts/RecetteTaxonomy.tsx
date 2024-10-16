@@ -23,7 +23,7 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
     useThemes(appState.settings.theme)
 
     return (
-        <main className={styles['RecetteTaxonomy']}>
+        <div className={styles['RecetteTaxonomy']}>
 
             <header>
                 <NavBar 
@@ -143,6 +143,6 @@ export default function RecetteError (props: RecetteTaxonomyProps) {
                 </main>
             </div>
             
-        </main>
+        </div>
     )
 }

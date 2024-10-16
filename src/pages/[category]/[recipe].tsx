@@ -27,13 +27,13 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-    const config: RecetteConfig = await fetchJson('/config')
-    const searchContext: SearchContext = await fetchJson('/search-context')
-    const recipe: Recipe = await fetchJson('/recipe/' + context.params!.category + '/' + context.params!.recipe)
-
     if (process.env.NODE_ENV === 'development') {
         await writeJson()
     }
+
+    const config: RecetteConfig = await fetchJson('/config')
+    const searchContext: SearchContext = await fetchJson('/search-context')
+    const recipe: Recipe = await fetchJson('/recipe/' + context.params!.category + '/' + context.params!.recipe)
 
     let checksum = ''
     if (process.env.NODE_ENV === 'development') {

@@ -19,7 +19,7 @@ function formatUnit (unit: string, qty: number) {
     if (unit === 'cup') {
         return qty === 1 ? 'cup' : 'cups'
     }
-    return qty
+    return unit
 }
 
 interface RecipeIngredientBlockProps {
@@ -29,6 +29,8 @@ interface RecipeIngredientBlockProps {
 }
 
 function RecipeIngredientBlock (props: RecipeIngredientBlockProps) {
+    console.log(props.ingredients)
+
     return (
         <Block size='medium'>
             {
@@ -106,6 +108,8 @@ export default function RecipeIngredients (props: RecipeIngredientsProps) {
             setPortionMultiplier(portionMultiplier - 0.25)
         }
     }
+
+    console.log(' :: ingredients : ', props.attributes.ingredients)
 
     return (
         <div className='RecipeIngredients'>

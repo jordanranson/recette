@@ -71,7 +71,7 @@ export default function RecipeSummary (props: RecipeSummaryProps) {
             </Block>
             {
                 ifThen(props.attributes.summary, () => (
-                    <Block size='medium'>
+                    <Block size='medium' className='RecipeSummary__Summary'>
                         <div dangerouslySetInnerHTML={{ __html: props.attributes.summary }} />
                     </Block>
                 ))

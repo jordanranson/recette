@@ -26,7 +26,7 @@ export default function RecetteError (props: RecetteErrorProps) {
     useThemes(appState.settings.theme)
 
     return (
-        <main className={styles['RecetteError']}>
+        <div className={styles['RecetteError']}>
 
             <header>
                 <NavBar 
@@ -57,6 +57,6 @@ export default function RecetteError (props: RecetteErrorProps) {
                 </main>
             </div>
             
-        </main>
+        </div>
     )
 }

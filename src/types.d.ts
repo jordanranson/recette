@@ -20,7 +20,7 @@ declare interface Recipe {
 
 declare interface RecipeIngredient {
     qty: number
-    unit: 'cup' | 'tsp' | 'tbsp' | 'oz' | 'g' | 'kg'
+    unit: 'cup' | 'tsp' | 'tbsp' | 'oz' | 'g' | 'kg' | 'dash' | 'barspoon' | 'measure' | 'unit'
     name: string
     link?: string
 }
