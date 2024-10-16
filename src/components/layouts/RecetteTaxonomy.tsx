@@ -3,7 +3,7 @@ import styles from './RecetteTaxonomy.module.sass'
 import React, { HTMLAttributes } from 'react'
 import Link from 'next/link'
 
-import { forEach, ifElse, ifThen } from '@/util/controlFlow'
+import { forEach, ifThen } from '@/util/controlFlow'
 import { useAppState } from '@/hooks/useAppState'
 import { useThemes } from '@/hooks/useThemes'
 

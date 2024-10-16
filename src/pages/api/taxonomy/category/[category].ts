@@ -14,7 +14,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-    let searchContext: SearchContext = {} as any
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()

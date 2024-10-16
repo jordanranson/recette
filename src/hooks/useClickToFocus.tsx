@@ -13,7 +13,7 @@ export function useClickToFocus (useQuerySelector: boolean = false) {
 
     const onClickOuter = (evt: React.MouseEvent<HTMLElement>) => {
         if (useQuerySelector) {
-            let el = evt.target as HTMLElement
+            const el = evt.target as HTMLElement
             let input = tryFindInput(el)
             if (!input) input = tryFindInput(el.parentElement!)
             if (input) input.focus()

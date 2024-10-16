@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { forEach, ifThen } from '@/util/controlFlow'
 
 import Block from './Block'
-import { LinkButton, useButtonClassName } from './controls/Button'
+import { LinkButton } from './controls/Button'
 import { toId } from '@/util/strings'
 
 const ABOUT_ITEM_KEYS = [
@@ -50,7 +50,6 @@ export interface RecipeSummaryProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function RecipeSummary (props: RecipeSummaryProps) {
     const hasAbout = useAbout(props.attributes)
-    const buttonClassName = useButtonClassName({ kind: 'link' })
     
     return (
         <div className='RecipeSummary'>
@@ -108,8 +107,8 @@ export default function RecipeSummary (props: RecipeSummaryProps) {
                                     <>
                                         <dt>Calories / Serving</dt>
                                         <dd>
-                                        <span>{props.attributes.caloriesPerServing}</span>
-                                        <span>kcal</span>
+                                            <span>{props.attributes.caloriesPerServing}</span>
+                                            <span>kcal</span>
                                         </dd>
                                     </>
                                 ))

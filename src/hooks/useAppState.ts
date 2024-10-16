@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Reducer, useEffect, useReducer, useRef } from 'react'
 
 export interface AppState {
@@ -5,7 +6,7 @@ export interface AppState {
     settings: {
         theme: 'system' | 'light' | 'dark'
     }
-    userData: {}
+    userData: object
 }
 
 interface AppStateActionSetContent {
@@ -43,56 +44,56 @@ export type AppStateAction =
 export function useAppState (recipe?: Recipe): [ state: AppState, dispatch: React.Dispatch<AppStateAction> ] {
     const reducer: Reducer<AppState, AppStateAction> = (state, action) => {
         switch (action.type) {
-            case 'SET_CONTENT':
-                return {
-                    ...state,
-                    recipe: {
-                        ...state.recipe,
-                        content: action.value.html,
-                    }
+        case 'SET_CONTENT':
+            return {
+                ...state,
+                recipe: {
+                    ...state.recipe,
+                    content: action.value.html,
                 }
+            }
 
-            case 'SET_THEME':
-                return saveAppState({
-                    ...state,
-                    settings: {
-                        ...state.settings,
-                        theme: action.value
-                    }
-                })
-
-            case 'TOGGLE_THEME':
-                const theme = state.settings.theme === 'system'
-                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark')
-                    : (state.settings.theme === 'light' ? 'dark' : 'light')
-
-                return saveAppState({
-                    ...state,
-                    settings: {
-                        ...state.settings,
-                        theme
-                    }
-                })
-
-            case 'CLEAR_USER_DATA':
-                return saveAppState({
-                    ...state,
-                    userData: {
-                        notes: [],
-                        checkboxes: []
-                    }
-                })
-
-            case 'RESTORE_STATE':
-                const restoredState = restoreAppState()
-                return {
-                    ...state,
-                    settings: restoredState?.settings ?? state.settings,
-                    userData: restoredState?.userData ?? state.userData
+        case 'SET_THEME':
+            return saveAppState({
+                ...state,
+                settings: {
+                    ...state.settings,
+                    theme: action.value
                 }
+            })
 
-            default:
-                throw new Error()
+        case 'TOGGLE_THEME':
+            const theme = state.settings.theme === 'system'
+                ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark')
+                : (state.settings.theme === 'light' ? 'dark' : 'light')
+
+            return saveAppState({
+                ...state,
+                settings: {
+                    ...state.settings,
+                    theme
+                }
+            })
+
+        case 'CLEAR_USER_DATA':
+            return saveAppState({
+                ...state,
+                userData: {
+                    notes: [],
+                    checkboxes: []
+                }
+            })
+
+        case 'RESTORE_STATE':
+            const restoredState = restoreAppState()
+            return {
+                ...state,
+                settings: restoredState?.settings ?? state.settings,
+                userData: restoredState?.userData ?? state.userData
+            }
+
+        default:
+            throw new Error()
         }
     }
     

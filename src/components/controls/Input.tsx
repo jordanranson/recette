@@ -61,7 +61,7 @@ export function PasswordInput (props: InputProps) {
                                 size={iconSize}
                                 onClick={() => setShowPassword(!showPassword)}
                             />
-                         </span>
+                        </span>
                     </>),
                     () => (<>
                         <input
@@ -73,7 +73,7 @@ export function PasswordInput (props: InputProps) {
                                 size={iconSize}
                                 onClick={() => setShowPassword(!showPassword)}
                             />
-                         </span>
+                        </span>
                     </>)
                 )
             }
@@ -154,7 +154,7 @@ export function GroupedPasswordInput (props: GroupedInputProps) {
                         />
                         <i 
                             onClick={() => setShowPassword(!showPassword)}
-                         />
+                        />
                     </>),
                     () => (<>
                         <input

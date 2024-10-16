@@ -1,5 +1,4 @@
 import React, { HTMLAttributes } from 'react'
-import Link from 'next/link'
 
 import { ifThen, forEach, ifElse } from '@/util/controlFlow'
 

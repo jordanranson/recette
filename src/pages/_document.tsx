@@ -14,22 +14,22 @@ export default function Document () {
         )
     })
 
-  return (
-    <Html lang='en'>
-        <Head />
-        <body>
-            <svg 
-                xmlns='http://www.w3.org/2000/svg' 
-                xmlnsXlink='http://www.w3.org/1999/xlink' 
-                style={{ display: 'none' }}
-            >
-                <defs>
-                    {symbols}
-                </defs>
-            </svg>
-            <Main />
-            <NextScript />
-        </body>
-    </Html>
-  )
+    return (
+        <Html lang='en'>
+            <Head />
+            <body>
+                <svg 
+                    xmlns='http://www.w3.org/2000/svg' 
+                    xmlnsXlink='http://www.w3.org/1999/xlink' 
+                    style={{ display: 'none' }}
+                >
+                    <defs>
+                        {symbols}
+                    </defs>
+                </svg>
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    )
 }

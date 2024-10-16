@@ -65,10 +65,11 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
             setResults(found)
         }
         onSearch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ query ])
 
     const shuffle = () => {
-        let found = searchContext.taxonomies.find(t => t.id === taxonomy)
+        const found = searchContext.taxonomies.find(t => t.id === taxonomy)
         
         if (!found) {
             const index = Math.round(Math.random() * (searchContext.recipes.length - 1))

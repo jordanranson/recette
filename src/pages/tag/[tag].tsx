@@ -11,7 +11,7 @@ interface StaticProps {
 }
 
 export const getStaticPaths = (async () => {
-    let searchContext: SearchContext = {} as any
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()
@@ -26,14 +26,14 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-    let config: RecetteConfig = {} as any
+    let config: RecetteConfig
     {
         const res = await fetch('http://localhost:3000/api/config')
         config = await res.json()
     }
 
-    let taxonomy: TaxonomyItem = {} as any
-    let searchContext: SearchContext = {} as any
+    let taxonomy: TaxonomyItem
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/taxonomy/tag/' + context.params!.tag)
         const result = await res.json()

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
 export function ifElse (condition: any, trueValue: () => JSX.Element, falseValue: () => JSX.Element) {

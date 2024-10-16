@@ -10,8 +10,8 @@ interface StaticProps {
     searchContext: SearchContext
 }
 
-export const getStaticPaths = (async (context) => {
-    let searchContext: SearchContext = {} as any
+export const getStaticPaths = (async () => {
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()
@@ -27,19 +27,19 @@ export const getStaticPaths = (async (context) => {
 }) satisfies GetStaticPaths
 
 export const getStaticProps = (async (context) => {
-    let config: RecetteConfig = {} as any
+    let config: RecetteConfig
     {
         const res = await fetch('http://localhost:3000/api/config')
         config = await res.json()
     }
 
-    let searchContext: SearchContext = {} as any
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()
     }
     
-    let recipe: Recipe = {} as any
+    let recipe: Recipe
     {
         const res = await fetch('http://localhost:3000/api/recipe/' + context.params!.category + '/' + context.params!.recipe)
         recipe = await res.json()

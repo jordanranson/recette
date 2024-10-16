@@ -11,7 +11,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-    let searchContext: SearchContext = {} as any
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()
@@ -24,7 +24,7 @@ export default async function handler(
     const author = {
         id: req.query.author as string,
         name: toTitle(req.query.author as string),
-        recipes: recipes.map((recipe) => ({ id: recipe.id } as any))
+        recipes: recipes.map((recipe) => ({ id: recipe.id } as unknown as RecipeItem))
     }
     
     const taxonomy = {

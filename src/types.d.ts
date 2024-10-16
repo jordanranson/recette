@@ -1,16 +1,3 @@
-// Web Component Types
-
-declare type CustomEvents<K extends string> = { 
-    [key in K] : (event: CustomEvent) => void 
-}
-
-declare type CustomElement<T, K extends string> = 
-    Partial<T & DOMAttributes<T> & 
-    { children: any } & 
-    { name: string } & CustomEvents<`on${K}`>>
-
-
-
 // Recipe Types
 
 declare interface RecetteConfig {
@@ -68,14 +55,7 @@ declare interface RecipeItem {
 
 
 
-// SSR
-
-declare interface RenderError {
-    status: number
-    title: string
-    message: string
-    error: string
-}
+// Search Types
 
 declare interface AuthorItem {
     id: string
@@ -101,4 +81,15 @@ declare interface SearchContext {
     recipes: RecipeItem[]
     tags: TagItem[]
     taxonomies: TaxonomyItem[]
+}
+
+
+
+// SSR
+
+declare interface RenderError {
+    status: number
+    title: string
+    message: string
+    error: string
 }

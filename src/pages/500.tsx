@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { GetStaticProps } from 'next/types'
 
 import ErrorMeta from '@/components/meta/ErrorMeta'
@@ -10,14 +9,14 @@ interface StaticProps {
     searchContext: SearchContext
 }
 
-export const getStaticProps = (async (context) => {
-    let config: RecetteConfig = {} as any
+export const getStaticProps = (async () => {
+    let config: RecetteConfig
     {
         const res = await fetch('http://localhost:3000/api/config')
         config = await res.json()
     }
 
-    let searchContext: SearchContext = {} as any
+    let searchContext: SearchContext
     {
         const res = await fetch('http://localhost:3000/api/search-context')
         searchContext = await res.json()

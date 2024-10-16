@@ -18,7 +18,7 @@ export default async function handler(
 ) {
     const taxonomyPaths = (await fs.readdir(path.join(__dirname, '../../../../public/recipes')))
 
-    let authorIds: string[] = []
+    const authorIds: string[] = []
     let tagIds: string[] = []
 
     const recipes = (await Promise.all(taxonomyPaths.map(async (taxonomyPath) => {
@@ -52,7 +52,7 @@ export default async function handler(
             recipes: recipes
                 .filter((recipe) => recipe.authorId === id)
                 .sort((a, b) => a.title.localeCompare(b.title))
-                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as any))
+                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as unknown as RecipeItem))
         }
     })
 
@@ -62,7 +62,7 @@ export default async function handler(
             recipes: recipes
                 .filter((recipe) => recipe.tags.includes(id))
                 .sort((a, b) => a.title.localeCompare(b.title))
-                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as any))
+                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as unknown as RecipeItem))
         }
     })
 
@@ -73,7 +73,7 @@ export default async function handler(
             recipes: recipes
                 .filter((recipe) => recipe.categoryId === taxonomyPath)
                 .sort((a, b) => a.title.localeCompare(b.title))
-                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as any))
+                .map((recipe) => ({ id: recipe.id, authorId: recipe.authorId, categoryId: recipe.categoryId } as unknown as RecipeItem))
         } as TaxonomyItem
     })
 

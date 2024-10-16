@@ -7,6 +7,7 @@ import { AppState, AppStateAction } from '@/hooks//useAppState'
 export function useRecipeRerender (state: AppState, dispatch: Dispatch<AppStateAction>) {
     const firstRenderRef = useRef(true)
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(debounce(() => {
         if (firstRenderRef.current) {
             firstRenderRef.current = false
