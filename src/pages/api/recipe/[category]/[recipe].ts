@@ -5,7 +5,7 @@ import { parseRecipe } from '@/markdown/parser'
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Recipe | RenderError>,
+    res: NextApiResponse<Recipe>,
 ) {
     let searchContext: SearchContext = {} as any
     {

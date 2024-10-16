@@ -1,5 +1,7 @@
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
+import { useRouter } from 'next/router'
+
+import RecipeMeta from '@/components/meta/RecipeMeta'
 import RecetteRecipe from '@/components/layouts/RecetteRecipe'
  
 interface StaticProps {
@@ -53,19 +55,19 @@ export const getStaticProps = (async (context) => {
 }) satisfies GetStaticProps<StaticProps>
 
 export default function RecipePage (props: StaticProps) {
-  return (
-    <>
-        <Head>
-            <title>Recette</title>
-            <meta name='description' content='' />
-            <meta name='viewport' content='width=device-width, initial-scale=1' />
-            <link rel='icon' href='/icon.svg' />
-        </Head>
-        <RecetteRecipe
-            recipe={props.recipe}
-            config={props.config}
-            searchContext={props.searchContext}
-        />
-    </>
-  )
+    const router = useRouter()
+    
+    return (
+        <>
+            <RecipeMeta
+                path={router.asPath}
+                attributes={props.recipe.attributes} 
+            />
+            <RecetteRecipe
+                recipe={props.recipe}
+                config={props.config}
+                searchContext={props.searchContext}
+            />
+        </>
+    )
 }

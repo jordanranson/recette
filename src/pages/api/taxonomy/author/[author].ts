@@ -9,7 +9,7 @@ interface Data {
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data | RenderError>,
+    res: NextApiResponse<Data>,
 ) {
     let searchContext: SearchContext = {} as any
     {

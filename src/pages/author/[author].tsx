@@ -1,6 +1,7 @@
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
+import { useRouter } from 'next/router'
 
+import TaxonomyMeta from '@/components/meta/TaxonomyMeta'
 import RecetteTaxonomy from '@/components/layouts/RecetteTaxonomy'
 
 interface StaticProps {
@@ -55,19 +56,19 @@ export const getStaticProps = (async (context) => {
 }) satisfies GetStaticProps<StaticProps>
 
 export default function AuthorPage (props: StaticProps) {
-  return (
-    <>
-      <Head>
-        <title>Recette</title>
-        <meta name='description' content='' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/icon.svg' />
-      </Head>
-      <RecetteTaxonomy
-            taxonomy={props.taxonomy}
-            config={props.config}
-            searchContext={props.searchContext}
-        />
-    </>
-  )
+    const router = useRouter()
+    
+    return (
+        <>
+            <TaxonomyMeta
+                path={router.asPath}
+                taxonomy={props.taxonomy}
+            />
+            <RecetteTaxonomy
+                taxonomy={props.taxonomy}
+                config={props.config}
+                searchContext={props.searchContext}
+            />
+        </>
+    )
 }

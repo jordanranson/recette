@@ -10,7 +10,12 @@ import NavBar from '../NavBar'
 import PageFooter from '../PageFooter'
 
 export interface RecetteErrorProps extends HTMLAttributes<HTMLDivElement> {
-    error: RenderError
+    error: {
+        status: number
+        title: string
+        message: string
+        error?: string
+    }
     config: RecetteConfig
     searchContext: SearchContext
 }
