@@ -13,7 +13,7 @@ ingredients:
     Cocktail:
         - qty: 1
           unit: oz
-          name: Amaretto
+          name: Luxardo Amaretto or Disaronno
         - qty: 1
           unit: oz
           name: Jamaican Rum
