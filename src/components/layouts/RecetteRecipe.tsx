@@ -23,7 +23,7 @@ export interface RecetteProps extends HTMLAttributes<HTMLDivElement> {
 
 export default function Recette (props: RecetteProps) {
     const router = useRouter()
-    const [ appState, dispatchAppState ] = useAppState(props.recipe)
+    const [ appState, dispatchAppState ] = useAppState()
 
     useThemes(appState.settings.theme)
 
@@ -37,7 +37,7 @@ export default function Recette (props: RecetteProps) {
 
             <header>
                 <NavBar 
-                    taxonomy={appState.recipe.attributes.categoryId}
+                    taxonomy={categoryId}
                     searchContext={props.searchContext} 
                     appState={appState}
                     dispatchAppState={dispatchAppState}
@@ -49,19 +49,19 @@ export default function Recette (props: RecetteProps) {
                     <article>
                         <Block size='medium'>
                             <RecipeSummary
-                                attributes={appState.recipe.attributes}
+                                attributes={props.recipe.attributes}
                             />
                         </Block>
                         <hr />
                         <Block size='medium'>
                             <RecipeIngredients
-                                attributes={appState.recipe.attributes}
+                                attributes={props.recipe.attributes}
                             />
                         </Block>
                         <hr />
                         <Block size='medium'>
                             <RecipeContent
-                                content={appState.recipe.content}
+                                content={props.recipe.content}
                             />
                         </Block>
                     </article>

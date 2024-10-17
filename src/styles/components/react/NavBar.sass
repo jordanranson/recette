@@ -4,12 +4,26 @@
     max-width: 1920px
     margin: 0 auto
 
+    @media (max-width: 474px)
+        width: 100%
+
+        .input.input--large,
+        .input.input--large > *
+            width: 100%
+
     > aside
-        display: flex
         align-items: center
+
+        .button:not(:first-child)
+            display: none
+
+        @media (min-width: 475px)
+            .button:not(:first-child)
+                display: inline-flex
 
     > nav
         position: relative
+        flex: 1
 
         .panel
             position: absolute
@@ -44,6 +58,3 @@
 
                 &:active
                     transform: translateY(1px)
-
-    > nav:not(:only-child)
-        margin: 0 var(--size-medium)

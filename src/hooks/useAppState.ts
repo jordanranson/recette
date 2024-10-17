@@ -2,16 +2,10 @@
 import { Reducer, useEffect, useReducer, useRef } from 'react'
 
 export interface AppState {
-    recipe: Recipe
     settings: {
         theme: 'system' | 'light' | 'dark'
     }
     userData: object
-}
-
-interface AppStateActionSetContent {
-    type: 'SET_CONTENT'
-    value: { html: string }
 }
 
 interface AppStateActionSetTheme {
@@ -35,23 +29,14 @@ interface AppStateActionRestoreState {
 }
 
 export type AppStateAction = 
-    AppStateActionSetContent |
     AppStateActionSetTheme |
     AppStateActionToggleTheme |
     AppStateActionClearUserData |
     AppStateActionRestoreState
 
-export function useAppState (recipe?: Recipe): [ state: AppState, dispatch: React.Dispatch<AppStateAction> ] {
+export function useAppState (): [ state: AppState, dispatch: React.Dispatch<AppStateAction> ] {
     const reducer: Reducer<AppState, AppStateAction> = (state, action) => {
         switch (action.type) {
-        case 'SET_CONTENT':
-            return {
-                ...state,
-                recipe: {
-                    ...state.recipe,
-                    content: action.value.html,
-                }
-            }
 
         case 'SET_THEME':
             return saveAppState({
@@ -98,7 +83,6 @@ export function useAppState (recipe?: Recipe): [ state: AppState, dispatch: Reac
     }
     
     const initialState: AppState = {
-        recipe: recipe || {} as any,
         settings: {
             theme: 'system'
         },
@@ -124,7 +108,6 @@ export function useAppState (recipe?: Recipe): [ state: AppState, dispatch: Reac
 
 function saveAppState (state: AppState) {
     const saveState: Partial<AppState> = { ...state }
-    delete saveState[ 'recipe' ]
     localStorage.setItem('recette:appState', JSON.stringify(saveState))
     return state
 }

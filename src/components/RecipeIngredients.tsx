@@ -8,16 +8,47 @@ import Level from './Level'
 import Icon from './Icon'
 
 function formatFraction (value: number) {
-    if (value === 0.25) return '¼'
-    if (value === 0.50) return '½'
-    if (value === 0.75) return '¾'
+    const remainder = (value % 1).toFixed(3)
+    const wholeNumber = Math.floor(value) === 0 ? '' : Math.floor(value)
 
-    return value.toString()
+    let fraction = ''
+    if (remainder === '0.250') fraction = '¼'
+    if (remainder === '0.500') fraction = '½'
+    if (remainder === '0.750') fraction = '¾'
+    if (remainder === '0.142') fraction = '⅐'
+    if (remainder === '0.625') fraction = '⅝'
+    if (remainder === '0.111') fraction = '⅑'
+    if (remainder === '0.100') fraction = '⅒'
+    if (remainder === '0.333') fraction = '⅓'
+    if (remainder === '0.666') fraction = '⅔'
+    if (remainder === '0.200') fraction = '⅕'
+    if (remainder === '0.400') fraction = '⅖'
+    if (remainder === '0.600') fraction = '⅗'
+    if (remainder === '0.800') fraction = '⅘'
+    if (remainder === '0.166') fraction = '⅙'
+    if (remainder === '0.833') fraction = '⅚'
+    if (remainder === '0.125') fraction = '⅛'
+    if (remainder === '0.375') fraction = '⅜'
+    if (remainder === '0.625') fraction = '⅝'
+    if (remainder === '0.875') fraction = '⅞'
+
+    const result = [ wholeNumber, fraction ].join(' ').trim()
+
+    return !result ? value : result
 }
 
 function formatUnit (unit: string, qty: number) {
     if (unit === 'cup') {
         return qty === 1 ? 'cup' : 'cups'
+    }
+    if (unit === 'dash') {
+        return qty === 1 ? 'dash' : 'dashes'
+    }
+    if (unit === 'barspoon') {
+        return qty === 1 ? 'barspoon' : 'barspoon'
+    }
+    if (unit === 'measure') {
+        return qty === 1 ? 'measure' : 'measures'
     }
     return unit
 }
@@ -29,8 +60,6 @@ interface RecipeIngredientBlockProps {
 }
 
 function RecipeIngredientBlock (props: RecipeIngredientBlockProps) {
-    console.log(props.ingredients)
-
     return (
         <Block size='medium'>
             {
@@ -47,8 +76,18 @@ function RecipeIngredientBlock (props: RecipeIngredientBlockProps) {
                                     <Checkbox />
                                     <Level>
                                         <strong>
-                                            <span>{formatFraction(ingredient.qty * props.multiplier)}</span>&nbsp;
-                                            <span>{formatUnit(ingredient.unit, ingredient.qty * props.multiplier)}</span>
+                                            <span>{formatFraction(ingredient.qty * props.multiplier)}</span>
+                                            {
+                                                ifThen(
+                                                    ingredient.unit, 
+                                                    () => (
+                                                        <>
+                                                            &nbsp;
+                                                            <span>{formatUnit(ingredient.unit, ingredient.qty * props.multiplier)}</span>
+                                                        </>
+                                                    )
+                                                )
+                                            }
                                         </strong>&nbsp;
                                         {
                                             ifElse(
@@ -108,8 +147,6 @@ export default function RecipeIngredients (props: RecipeIngredientsProps) {
             setPortionMultiplier(portionMultiplier - 0.25)
         }
     }
-
-    console.log(' :: ingredients : ', props.attributes.ingredients)
 
     return (
         <div className='RecipeIngredients'>

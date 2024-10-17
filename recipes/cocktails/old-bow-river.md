@@ -38,4 +38,4 @@ Ahead of time, chill a tumbler, coupe, or martini glass in the freezer.
 
 ## Assembling the Drink
 
-Fill a mixing glass with ice and add cocktail ingredients. Stir for 30 seconds then strain into your chilled glass. Garnish by dropping a cherry into the glass.
+Place a few ice cubes into a mixing glass and add cocktail ingredients. Stir for 30 seconds then strain into your chilled glass. Garnish by dropping a cherry into the glass.

@@ -131,7 +131,7 @@ export default function NavBar (props: NavBarProps) {
     })
 
     return (
-        <div className='NavBar'>
+        <Level size='regular' className='NavBar'>
             <aside>
                 <Level size='small'>
                     <IconButtonLink
@@ -142,6 +142,23 @@ export default function NavBar (props: NavBarProps) {
                         onClick={shuffle}
                         name='shuffle'
                     />
+                    {
+                        ifElse(
+                            theme === 'dark',
+                            () => (
+                                <IconButton
+                                    onClick={onAppearanceChange}
+                                    name='moon'
+                                />
+                            ),
+                            () => (
+                                <IconButton
+                                    onClick={onAppearanceChange}
+                                    name='sun'
+                                />
+                            ) 
+                        )
+                    }
                 </Level>
             </aside>
             <nav>
@@ -167,25 +184,6 @@ export default function NavBar (props: NavBarProps) {
                     ))
                 }
             </nav>
-            <aside>
-                {
-                    ifElse(
-                        theme === 'dark',
-                        () => (
-                            <IconButton
-                                onClick={onAppearanceChange}
-                                name='moon'
-                            />
-                        ),
-                        () => (
-                            <IconButton
-                                onClick={onAppearanceChange}
-                                name='sun'
-                            />
-                        ) 
-                    )
-                }
-            </aside>
-        </div>
+        </Level>
     )
 }
