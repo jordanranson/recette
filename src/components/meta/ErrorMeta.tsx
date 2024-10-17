@@ -16,6 +16,7 @@ export default function Meta (props: MetaProps) {
             <meta name='viewport' content='width=device-width, initial-scale=1' />
             <meta name='description' content={props.error.message} />
             <link rel='icon' href='/icon.svg' />
+            <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
             <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(
                 {
                     '@context': 'https://schema.org',

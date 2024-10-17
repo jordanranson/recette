@@ -10,7 +10,7 @@ import { IconButton, IconButtonLink } from './Icon'
 import Level from './Level'
 import { toTitle } from '@/util/strings'
 
-function useSearch (searchContext: SearchContext, taxonomy?: string) {
+function useSearch (searchContext: SearchContext, taxonomy?: string, recipeId?: string) {
     const router = useRouter()
     const [ query, setQuery ] = useState('')
     const [ results, setResults ] = useState<RecipeItem[]>([])
@@ -69,17 +69,19 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
     }, [ query ])
 
     const shuffle = () => {
-        const found = searchContext.taxonomies.find(t => t.id === taxonomy)
+        const found = searchContext.taxonomies.find(t => (t.id === taxonomy))
         
         if (!found) {
-            const index = Math.round(Math.random() * (searchContext.recipes.length - 1))
-            const recipe = searchContext.recipes[index]
+            const recipes = searchContext.recipes.filter(r => r.id !== recipeId)
+            const index = Math.round(Math.random() * (recipes.length - 1))
+            const recipe = recipes[index]
             router.push('/' + recipe.categoryId + '/' + recipe.id)
             return
         }
 
-        const index = Math.round(Math.random() * (found.recipes.length - 1))
-        const recipe = found.recipes[index]
+        const recipes = found.recipes.filter(r => r.id !== recipeId)
+        const index = Math.round(Math.random() * (recipes.length - 1))
+        const recipe = recipes[index]
         router.push('/' + recipe.categoryId + '/' + recipe.id)
     }
 
@@ -92,13 +94,14 @@ function useSearch (searchContext: SearchContext, taxonomy?: string) {
 
 interface NavBarProps extends HTMLAttributes<HTMLDivElement> {
     taxonomy?: string
+    recipeId?: string
     searchContext: SearchContext
     appState: AppState
     dispatchAppState: React.Dispatch<AppStateAction>
 }
 
 export default function NavBar (props: NavBarProps) {
-    const { results, setQuery, shuffle } = useSearch(props.searchContext, props.taxonomy)
+    const { results, setQuery, shuffle } = useSearch(props.searchContext, props.taxonomy, props.recipeId)
 
     const [ theme, setTheme ] = useState(props.appState.settings.theme)
     useEffect(() => {

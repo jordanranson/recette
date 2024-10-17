@@ -38,6 +38,7 @@ export default function Recette (props: RecetteProps) {
             <header>
                 <NavBar 
                     taxonomy={categoryId}
+                    recipeId={recipeId}
                     searchContext={props.searchContext} 
                     appState={appState}
                     dispatchAppState={dispatchAppState}

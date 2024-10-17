@@ -26,6 +26,7 @@ export default function Meta (props: MetaProps) {
             <meta property='og:type' content='article' />
             <meta property='og:url' content={props.path} />
             <link rel='icon' href='/icon.svg' />
+            <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
             <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(
                 {
                     '@context': 'https://schema.org',

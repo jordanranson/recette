@@ -13,6 +13,7 @@ export default function Meta (props: MetaProps) {
             <meta charSet='UTF-8' />
             <meta name='viewport' content='width=device-width, initial-scale=1' />
             <link rel='icon' href='/icon.svg' />
+            <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
             <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(
                 {
                     '@context': 'https://schema.org',
