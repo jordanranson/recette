@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { forEach, ifElse, ifThen } from '@/util/controlFlow'
+import { forEach, ifThen } from '@/util/controlFlow'
 import { AppState, AppStateAction } from '@/hooks/useAppState'
 
 import { JumboSearch } from './controls/JumboSearch'
@@ -103,16 +103,6 @@ interface NavBarProps extends HTMLAttributes<HTMLDivElement> {
 export default function NavBar (props: NavBarProps) {
     const { results, setQuery, shuffle } = useSearch(props.searchContext, props.taxonomy, props.recipeId)
 
-    const [ theme, setTheme ] = useState(props.appState.settings.theme)
-    useEffect(() => {
-        if (props.appState.settings.theme === 'system') {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-            setTheme(prefersDark ? 'dark' : 'light')
-        } else {
-            setTheme(props.appState.settings.theme)
-        }
-    }, [ props.appState.settings.theme ])
-
     const onAppearanceChange = () => {
         props.dispatchAppState({
             type: 'TOGGLE_THEME',
@@ -146,20 +136,36 @@ export default function NavBar (props: NavBarProps) {
                         name='shuffle'
                     />
                     {
-                        ifElse(
-                            theme === 'dark',
+                        ifThen(
+                            props.appState.settings.theme === 'system',
                             () => (
                                 <IconButton
                                     onClick={onAppearanceChange}
-                                    name='moon'
+                                    name='darkMode'
                                 />
-                            ),
+                            )
+                        )
+                    }
+                    {
+                        ifThen(
+                            props.appState.settings.theme === 'light',
                             () => (
                                 <IconButton
                                     onClick={onAppearanceChange}
                                     name='sun'
                                 />
                             ) 
+                        )
+                    }
+                    {
+                        ifThen(
+                            props.appState.settings.theme === 'dark',
+                            () => (
+                                <IconButton
+                                    onClick={onAppearanceChange}
+                                    name='moon'
+                                />
+                            )
                         )
                     }
                 </Level>
