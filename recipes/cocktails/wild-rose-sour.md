@@ -49,7 +49,7 @@ Fill a tumbler with ice.
 
 ## Assembling the Drink
 
-Put a scoop of ice into a cocktail shaker and add cocktail ingredients. Shake vigourously for 20 seconds. Strain into the tumbler. Garnish with a lime wheel.
+Put a scoop of ice into a cocktail shaker and add cocktail ingredients. Shake vigorously for 20 seconds. Strain into the tumbler. Garnish with a lime wheel.
 
 ## Strawberry Rose Syrup
 
