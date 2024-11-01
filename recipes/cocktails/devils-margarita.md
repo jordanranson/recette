@@ -2,7 +2,7 @@
 title: The Devil's Margarita
 description: A layered margarita with tequila, lemon juice, and a red wine float for depth.
 summary: >
-    A Devil's Margarita is a twist on the classic margarita made with a float of red wine on top, creating a striking layered effect and adding depth to the flavor. This personal take swaps lime juice for lemon, offering a brighter and more tangy profile while still delivering the rich, slightly fruity finish from the wine.
+    The Devil's Margarita is a twist on the classic margarita made with a float of red wine on top, creating a striking layered effect and adding depth to the flavor. This personal take swaps lime juice for lemon, offering a brighter and more tangy profile while still delivering the rich, slightly fruity finish from the wine.
 author: Jordan Ranson
 tags: margarita, tequila, sour, wine
 created: 2024-10-31
