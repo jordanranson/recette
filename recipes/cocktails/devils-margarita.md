@@ -13,7 +13,7 @@ ingredients:
     Cocktail:
         - qty: 2
           unit: oz
-          name: Reposado Tequila
+          name: Blanco Tequila
         - qty: 0.75
           unit: oz
           name: Lemon Juice
