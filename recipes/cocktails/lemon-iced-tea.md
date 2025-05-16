@@ -4,7 +4,7 @@ description: TODO: short tagline describing the cocktail
 summary: >
     TODO: 2-3 sentences describing how the cocktail tastes
 author: Jordan R
-tags: iced tea, non-alchoholic
+tags: iced tea, non-alchoholic, summer
 created: 2025-04-19
 modified: 2025-04-19
 yield: 8
@@ -43,4 +43,3 @@ Pour over ice and garnish with a lemon wheel.
 ## Tips & Tricks
 
 Adding the lemon juice at the end with the ice helps prevent it from heating up which dulls the flavour.
-
