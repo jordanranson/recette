@@ -1,8 +1,8 @@
 ---
 title: Tropical Fruit Punch
-description: TODO: short tagline describing the cocktail
+description: A boozy, island-style throwback to classic fruit punch with a tropical twist.
 summary: >
-    TODO: 2-3 sentences describing how the cocktail tastes like koolaid fruit punch
+    Tropical Fruit Punch tastes like the grown-up version of the fruit punch you loved as a kid—sweet, tangy, and bursting with juicy flavor. The blend of passion fruit liqueur and strawberry peach juice delivers a nostalgic, Kool-Aid-like brightness, while white rum adds just the right kick. It’s fun, fruity, and ready for poolside sipping under a tiny umbrella.
 author: Jordan R
 tags: tequila, sour
 created: 2025-05-16

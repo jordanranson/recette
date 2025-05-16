@@ -1,8 +1,8 @@
 ---
 title: Lemon Iced Tea
-description: TODO: short tagline describing the cocktail
+description: A bright, refreshing iced tea with tart lemon and a hint of sweetness.
 summary: >
-    TODO: 2-3 sentences describing how the cocktail tastes
+    This Lemon Iced Tea balances the boldness of black tea with the gentle floral notes of herbal tea, brought to life by fresh lemon juice and rich simple syrup. It’s crisp, slightly tangy, and just sweet enough to keep you sipping. Perfectly chilled and deeply refreshing, it’s a summer essential for any non-alcoholic lineup.
 author: Jordan R
 tags: iced tea, non-alchoholic, summer
 created: 2025-04-19

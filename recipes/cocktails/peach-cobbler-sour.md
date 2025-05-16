@@ -1,8 +1,8 @@
 ---
 title: Peach Cobbler Sour
-description: TODO: short tagline describing the cocktail
+description: A cozy dessert-inspired sour with peach, vanilla, and warm cinnamon.
 summary: >
-    TODO: 2-3 sentences describing how the cocktail tastes like a peach cobbler
+    The Peach Cobbler Sour channels the flavors of its namesake dessert into a silky, tart cocktail. Peach vodka provides juicy fruitiness, while vanilla syrup and a touch of cinnamon bring the sweet, spiced warmth of baked cobbler. Finished with a creamy egg white foam and a dash of bitters, it’s like sipping a slice of pie with a citrusy twist.
 author: Jordan R
 tags: vodka, sour
 created: 2025-04-19

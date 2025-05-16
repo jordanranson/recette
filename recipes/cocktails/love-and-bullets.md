@@ -1,8 +1,8 @@
 ---
 title: Love and Bullets
-description: TODO: short tagline describing the cocktail
+description: A tropical twist on the Mexican Firing Squad with passion fruit and bold bitters.
 summary: >
-    TODO: 2-3 sentences describing how the cocktail tastes and how its a riff on a mexican firing squad
+    Love and Bullets reimagines the classic Mexican Firing Squad by swapping grenadine for passion fruit liqueur, adding a vibrant tropical edge to this tequila sour. The tart lime and rich fruit flavors are sharpened by a few dashes of Peychaud’s bitters, creating a cocktail that's both playful and intense. It’s a bold, bittersweet take that keeps the spirit of the original while carving out something uniquely seductive.
 author: Jordan R
 tags: tequila, sour
 created: 2025-05-16

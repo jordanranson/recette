@@ -1,8 +1,8 @@
 ---
 title: Michelada
-description: TODO: short tagline describing the cocktail
+description: A spicy, savory beer cocktail with bold umami and a zesty kick.
 summary: >
-    TODO: 2-3 sentences describing how the cocktail tastes
+    The Michelada is a Mexican classic that blends crisp lager with lime juice, Clamato, and a punchy mix of hot sauce, Worcestershire, and soy. It’s tangy, salty, and just spicy enough to wake up your palate—perfect for hot days or curing a hangover. Rimmed with Tajin and sea salt, it’s a savory, refreshing drink that invites bold garnishes and bigger flavors.
 author: Jordan R
 tags: savory, beer
 created: 2025-05-16
