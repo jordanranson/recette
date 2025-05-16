@@ -3,7 +3,7 @@ title: Old Bow River
 description: A Black Manhattan variation made with wheat whisky and amaro vermouth.
 summary: >
     The Old Bow River is a twist on the Black Manhattan, featuring a local wheat whisky from Wild Life Distillery in Canmore, Alberta. The sweet, earthy notes of the whisky blend with the amaro vermouth, offering flavors of banana bread, cherries, and rich chocolate.
-author: Jordan Ranson
+author: Jordan R
 tags: manhattan, amaro, vermouth, whisky
 created: 2024-10-16
 modified: 2024-10-16

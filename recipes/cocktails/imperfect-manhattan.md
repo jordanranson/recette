@@ -3,7 +3,7 @@ title: Imperfect Manhattan
 description: A balanced twist on the classic Manhattan with equal parts rye whiskey and sweet vermouth.
 summary: >
     A twist on the classic Manhattan, this version strikes a balance with equal parts rye whiskey and sweet vermouth. Smooth and slightly less intense, it delivers a mellow sweetness with just the right amount of spice from the rye. Perfect for those who prefer a more approachable yet still bold cocktail.
-author: Jordan Ranson
+author: Jordan R
 tags: manhattan, vermouth, rye, campari
 created: 2024-10-16
 modified: 2024-10-16

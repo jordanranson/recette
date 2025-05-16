@@ -3,7 +3,7 @@ title: Wild Rose Sour
 description: A fruity and floral tequila sour made with reposado tequila, lime, strawberry, and rose.
 summary: >
     The Wild Rose Sour is a refreshing riff on a Tommy's Margarita, swapping out the agave syrup for a homemade strawberry rose syrup. This twist adds a subtle sweetness and floral note, perfectly balancing the tartness of the lime and enhancing the smooth, rich flavor of reposado tequila.
-author: Jordan Ranson
+author: Jordan R
 tags: margarita, tequila, sour
 created: 2024-10-16
 modified: 2024-10-16

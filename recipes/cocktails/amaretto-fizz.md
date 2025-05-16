@@ -3,7 +3,7 @@ title: Amaretto Fizz
 description: A blend of amaretto, Jamaican rum, and lemon juice, with a fizzy finish.
 summary: >
     The Amaretto Fizz combines the nutty sweetness of amaretto with the bold flavors of Jamaican rum and a splash of ginger ale for a fizzy finish. Lemon juice adds a bright tang, while the lemon twist and maraschino cherry provide a simple, elegant garnish. It’s an easy yet flavorful cocktail that works well for both casual sipping and entertaining.
-author: Jordan Ranson
+author: Jordan R
 tags: amaretto, rum, sour
 created: 2024-10-16
 modified: 2024-10-16
